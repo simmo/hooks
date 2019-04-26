@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - 'node'
+  - 'lts/*'
+  - '8.13.0'
+branches:
+  only:
+    - master
+    - develop
+    - /^release/
+    - /^greenkeeper/.*$/
