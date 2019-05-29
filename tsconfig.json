@@ -1,7 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["es2015", "es2017", "dom"]
+    "jsx": "react",
+    "lib": ["es2018", "dom"],
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "pretty": true,
+    "target": "es5"
   },
-  "include": ["packages"]
+  "include": ["src/index.ts"],
+  "exclude": ["node_modules", "**/*.test.ts", "**/*.test.tsx"]
 }

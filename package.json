@@ -1,10 +1,28 @@
 {
-  "private": true,
-  "workspaces": [
-    "packages/*"
+  "version": "0.0.0",
+  "description": "React hooks utility kit",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "typings/index.d.ts",
+  "typings": "typings/index.d.ts",
+  "files": [
+    "cjs",
+    "esm",
+    "typings"
   ],
+  "author": "Mike Simmonds (https://simmo.dev)",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint --ext .tsx,.ts ./src",
+    "prepublishOnly": "yarn build",
+    "build:cjs": "tsc -m commonjs --outDir cjs",
+    "build:es": "tsc -m esNext --outDir esm",
+    "build": "yarn build:cjs --declaration --declarationDir typings & yarn build:es",
+    "report": "node ./scripts/build-report.js"
   },
   "prettier": {
     "tabWidth": 2,
@@ -13,56 +31,71 @@
     "trailingComma": "es5"
   },
   "jest": {
-    "verbose": true,
+    "timers": "fake",
     "snapshotSerializers": [
       "jest-serializer-path"
     ],
     "roots": [
-      "<rootDir>/packages"
+      "<rootDir>/src"
     ],
     "moduleFileExtensions": [
       "js",
       "json",
-      "ts"
+      "ts",
+      "tsx"
     ],
     "transform": {
       "^.+\\.(ts|tsx)$": "ts-jest"
     }
   },
   "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "jsx": true,
+      "useJSXTextNode": true
+    },
     "extends": [
-      "airbnb",
+      "plugin:@typescript-eslint/recommended",
+      "prettier/@typescript-eslint",
       "plugin:prettier/recommended"
     ],
-    "env": {
-      "browser": true,
-      "es6": true,
-      "node": true,
-      "jest": true
-    },
     "plugins": [
+      "@typescript-eslint",
       "react-hooks"
-    ]
+    ],
+    "rules": {
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn"
+    }
   },
   "devDependencies": {
-    "@types/jest": "^24.0.11",
-    "@types/react": "^16.8.14",
+    "@types/jest": "^24.0.13",
+    "@types/node": "^12.0.3",
+    "@types/react": "^16.8.18",
+    "@types/react-dom": "^16.8.4",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
     "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.2.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "jest": "^24.7.1",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "filesize": "^4.1.2",
+    "glob": "^7.1.4",
+    "gzip-size": "^5.1.1",
+    "jest": "^24.8.0",
     "jest-serializer-path": "^0.1.15",
-    "lerna": "^3.13.3",
-    "prettier": "^1.17.0",
+    "kleur": "^3.0.3",
+    "prettier": "^1.17.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-hooks-testing-library": "^0.5.0",
     "react-test-renderer": "^16.8.6",
-    "rollup": "^1.10.1",
-    "rollup-plugin-filesize": "^6.0.1",
-    "rollup-plugin-typescript": "^1.0.1",
+    "terser": "^4.0.0",
     "ts-jest": "^24.0.2",
     "tslib": "^1.9.3",
     "typescript": "^3.4.5"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
   }
 }
