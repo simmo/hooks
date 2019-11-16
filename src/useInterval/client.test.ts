@@ -1,17 +1,18 @@
-import { renderHook } from 'react-hooks-testing-library'
+import { renderHook } from '@testing-library/react-hooks'
 import useInterval from '.'
 
 describe('useInterval', () => {
   const callback = jest.fn().mockName('mock callback')
-  const { rerender } = renderHook(interval => useInterval(callback, interval), {
-    initialProps: 500,
-  })
 
   afterEach(() => {
     callback.mockClear()
   })
 
   test('executes callback after delay', () => {
+    renderHook(({ interval }) => useInterval(callback, interval), {
+      initialProps: { interval: 500 },
+    })
+
     expect(callback).not.toBeCalled()
 
     jest.advanceTimersByTime(1000)
@@ -21,13 +22,24 @@ describe('useInterval', () => {
   })
 
   test('pauses interval if no delay', () => {
-    expect(callback).not.toBeCalled()
-    rerender(null)
+    const { rerender } = renderHook(
+      ({ interval }) => useInterval(callback, interval),
+      {
+        initialProps: { interval: 500 },
+      }
+    )
+
     jest.advanceTimersByTime(500)
-    expect(callback).not.toBeCalled()
-    rerender(500)
-    jest.advanceTimersByTime(500)
-    expect(callback).toBeCalled()
     expect(callback).toHaveBeenCalledTimes(1)
+
+    rerender({ interval: null })
+
+    jest.advanceTimersByTime(500)
+    expect(callback).toHaveBeenCalledTimes(1)
+
+    rerender({ interval: 500 })
+
+    jest.advanceTimersByTime(500)
+    expect(callback).toHaveBeenCalledTimes(2)
   })
 })

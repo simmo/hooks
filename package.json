@@ -32,6 +32,7 @@
   },
   "jest": {
     "timers": "fake",
+    "verbose": true,
     "snapshotSerializers": [
       "jest-serializer-path"
     ],
@@ -55,9 +56,11 @@
       "useJSXTextNode": true
     },
     "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
       "plugin:@typescript-eslint/recommended",
-      "prettier/@typescript-eslint",
-      "plugin:prettier/recommended"
+      "plugin:prettier/recommended",
+      "prettier/@typescript-eslint"
     ],
     "plugins": [
       "@typescript-eslint",
@@ -70,16 +73,19 @@
     }
   },
   "devDependencies": {
+    "@testing-library/react-hooks": "^3.2.1",
     "@types/jest": "^24.0.13",
     "@types/node": "^12.0.4",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
-    "@typescript-eslint/eslint-plugin": "^1.9.0",
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.3.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react-hooks": "^1.6.0",
-    "filesize": "^4.1.2",
+    "@types/testing-library__react-hooks": "^3.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.7.0",
+    "@typescript-eslint/parser": "^2.7.0",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.6.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "filesize": "^6.0.1",
     "glob": "^7.1.4",
     "gzip-size": "^5.1.1",
     "jest": "^24.8.0",
@@ -88,7 +94,6 @@
     "prettier": "^1.17.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-hooks-testing-library": "^0.5.0",
     "react-test-renderer": "^16.8.6",
     "terser": "^4.0.0",
     "ts-jest": "^24.0.2",

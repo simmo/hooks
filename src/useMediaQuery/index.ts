@@ -3,11 +3,10 @@ import useBoolean from '../useBoolean'
 
 export default function useMediaQuery(
   query: string,
-  fallback: boolean = false
+  fallback = false
 ): boolean {
   const [state, setState] = useBoolean(fallback)
 
-  // Listen for changes
   useEffect(() => {
     const mediaQuery = window.matchMedia(query)
     const handleChange = ({ matches }: MediaQueryListEvent) => {

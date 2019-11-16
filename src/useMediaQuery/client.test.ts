@@ -1,4 +1,4 @@
-import { act, renderHook } from 'react-hooks-testing-library'
+import { act, renderHook } from '@testing-library/react-hooks'
 import useMediaQuery from '.'
 
 describe('useMediaQuery', () => {
@@ -13,19 +13,26 @@ describe('useMediaQuery', () => {
     removeListener,
   }))
 
-  const { result, unmount } = renderHook(() =>
-    useMediaQuery('(min-width: 300px)')
-  )
+  afterEach(() => {
+    addListener.mockClear()
+    removeListener.mockClear()
+  })
 
   test('returns the current match', () => {
+    const { result } = renderHook(() => useMediaQuery('(min-width: 300px)'))
+
     expect(result.current).toBe(false)
   })
 
   test('listens for changes', () => {
+    renderHook(() => useMediaQuery('(min-width: 300px)'))
+
     expect(addListener).toBeCalled()
   })
 
   test('responds to changes', () => {
+    const { result } = renderHook(() => useMediaQuery('(min-width: 300px)'))
+
     act(() => {
       addListener.mock.calls[0][0]({ matches: true })
     })
@@ -40,6 +47,8 @@ describe('useMediaQuery', () => {
   })
 
   test('removes the listener', () => {
+    const { unmount } = renderHook(() => useMediaQuery('(min-width: 300px)'))
+
     unmount()
 
     expect(removeListener).toBeCalled()
