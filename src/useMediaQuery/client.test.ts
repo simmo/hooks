@@ -5,13 +5,15 @@ describe('useMediaQuery', () => {
   const addListener = jest.fn()
   const removeListener = jest.fn()
 
-  window.matchMedia = jest.fn().mockImplementation(query => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener,
-    removeListener,
-  }))
+  if ('window' in global) {
+    window.matchMedia = jest.fn().mockImplementation(query => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener,
+      removeListener,
+    }))
+  }
 
   afterEach(() => {
     addListener.mockClear()
