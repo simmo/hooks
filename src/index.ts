@@ -1,3 +1,4 @@
+export { default as createStore } from './createStore'
 export { default as useBoolean } from './useBoolean'
 export { default as useGeolocation } from './useGeolocation'
 export { default as useInterval } from './useInterval'
