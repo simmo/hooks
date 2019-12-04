@@ -1,4 +1,5 @@
 export { default as useBoolean } from './useBoolean'
+export { default as useGeolocation } from './useGeolocation'
 export { default as useInterval } from './useInterval'
 export { default as useMediaQuery } from './useMediaQuery'
 export { default as useRaf } from './useRaf'
