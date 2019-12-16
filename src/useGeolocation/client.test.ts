@@ -18,8 +18,8 @@ const positions: Position[] = [
   timestamp,
 }))
 
-const lastCallOf = (mock: jest.Mock) => {
-  const [{ value }] = mock.mock.results.reverse()
+const lastCallOf = ({ mock: { results } }: jest.Mock) => {
+  const [{ value }] = results.reverse()
 
   return value
 }
