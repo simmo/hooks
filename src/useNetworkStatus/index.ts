@@ -1,21 +1,18 @@
 import { useState, useEffect } from 'react'
 
+const ONLINE = 'online'
+const OFFLINE = 'offline'
+
 interface NetworkStatus {
   online: boolean
 }
 
-const isSupported = typeof window !== 'undefined'
-
 export default function useNetworkStatus() {
   const [status, setStatus] = useState<NetworkStatus>({
-    online: isSupported ? navigator?.onLine : undefined,
+    online: typeof window !== 'undefined' ? navigator?.onLine : undefined,
   })
 
   useEffect(() => {
-    if (!isSupported) return
-
-    const ONLINE = 'online'
-    const OFFLINE = 'offline'
     const updateOnlineStatus = () => {
       setStatus(prevStatus => ({
         ...prevStatus,
