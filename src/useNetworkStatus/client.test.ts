@@ -11,8 +11,8 @@ describe('useNetworkStatus', () => {
   })
 
   test('online undefined', () => {
-    Object.defineProperty(window, 'navigator', {
-      value: {},
+    Object.defineProperty(window.navigator, 'onLine', {
+      value: undefined,
       writable: true,
     })
 

@@ -9,14 +9,16 @@ interface NetworkStatus {
 
 export default function useNetworkStatus() {
   const [status, setStatus] = useState<NetworkStatus>({
-    online: typeof window !== 'undefined' ? navigator?.onLine : undefined,
+    online:
+      typeof window !== 'undefined' ? window?.navigator?.onLine : undefined,
   })
 
   useEffect(() => {
     const updateOnlineStatus = () => {
       setStatus(prevStatus => ({
         ...prevStatus,
-        online: navigator?.onLine,
+        online:
+          typeof window !== 'undefined' ? window?.navigator?.onLine : undefined,
       }))
     }
 
