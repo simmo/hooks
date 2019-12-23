@@ -23,7 +23,7 @@ export default class Store<State> {
 
     return () => {
       this.subscriptions = this.subscriptions.filter(
-        item => item != subscription
+        item => item !== subscription
       )
     }
   }
