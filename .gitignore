@@ -4,3 +4,4 @@ cjs
 esm
 typings
 *.log
+.yarn

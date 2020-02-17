@@ -2,14 +2,14 @@
  * @jest-environment node
  */
 
-import renderHookServer from '../utils/renderHookServer'
-import useInterval from '.'
+import renderHookServer from '../../utils/renderHookServer'
+import useTimeout from '.'
 
-describe('useInterval', () => {
+describe('useTimeout', () => {
   test('should render', () => {
     const callback = jest.fn().mockName('mock callback')
 
-    renderHookServer(() => useInterval(callback, 1000))
+    renderHookServer(() => useTimeout(callback, 1000))
 
     expect(callback).not.toHaveBeenCalled()
   })

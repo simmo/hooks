@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 
-import renderHookServer from '../utils/renderHookServer'
+import renderHookServer from '../../utils/renderHookServer'
 import createStore from '.'
 
 describe('createStore', () => {

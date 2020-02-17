@@ -1,20 +1,8 @@
 {
-  "version": "0.0.0",
-  "description": "React hooks utility kit",
-  "main": "cjs/index.js",
-  "module": "esm/index.js",
-  "types": "typings/index.d.ts",
-  "typings": "typings/index.d.ts",
-  "files": [
-    "cjs",
-    "esm",
-    "typings"
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
-  "author": "Mike Simmonds (https://simmo.dev)",
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "test": "jest",
     "lint": "eslint --ext .tsx,.ts ./src",
@@ -22,7 +10,8 @@
     "build:cjs": "tsc -m commonjs --outDir cjs",
     "build:es": "tsc -m esNext --outDir esm",
     "build": "yarn build:cjs --declaration --declarationDir typings & yarn build:es",
-    "report": "node ./scripts/build-report.js"
+    "report": "node ./scripts/build-report.js",
+    "lerna": "lerna"
   },
   "prettier": {
     "tabWidth": 2,
@@ -37,7 +26,7 @@
       "jest-serializer-path"
     ],
     "roots": [
-      "<rootDir>/src"
+      "<rootDir>/packages"
     ],
     "moduleFileExtensions": [
       "js",
@@ -74,37 +63,26 @@
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^3.2.1",
-    "@types/jest": "^24.0.13",
-    "@types/node": "^12.0.4",
-    "@types/react": "^16.8.19",
-    "@types/react-dom": "^16.8.4",
-    "@types/shallowequal": "^1.1.1",
-    "@types/testing-library__react-hooks": "^3.1.0",
-    "@typescript-eslint/eslint-plugin": "^2.7.0",
-    "@typescript-eslint/parser": "^2.7.0",
-    "eslint": "^6.6.0",
-    "eslint-config-prettier": "^6.6.0",
-    "eslint-plugin-prettier": "^3.1.1",
+    "@types/jest": "^24.9.1",
+    "@types/node": "^13.5.0",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "@types/testing-library__react-hooks": "^3.2.0",
+    "@typescript-eslint/eslint-plugin": "^2.17.0",
+    "@typescript-eslint/parser": "^2.17.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react-hooks": "^2.3.0",
-    "filesize": "^6.0.1",
-    "glob": "^7.1.4",
-    "gzip-size": "^5.1.1",
-    "jest": "^24.8.0",
+    "jest": "^25.1.0",
     "jest-serializer-path": "^0.1.15",
-    "kleur": "^3.0.3",
-    "prettier": "^1.17.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-test-renderer": "^16.8.6",
-    "terser": "^4.0.0",
-    "ts-jest": "^24.0.2",
-    "tslib": "^1.9.3",
-    "typescript": "^3.5.1"
+    "lerna": "^3.20.2",
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-test-renderer": "^16.12.0",
+    "ts-jest": "^25.0.0",
+    "typescript": "^3.7.5"
   },
-  "peerDependencies": {
-    "react": ">=16.8"
-  },
-  "dependencies": {
-    "shallowequal": "^1.1.0"
-  }
+  "name": "hooks"
 }

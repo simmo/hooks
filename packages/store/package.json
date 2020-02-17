@@ -1,0 +1,29 @@
+{
+  "name": "@hooks/store",
+  "description": "React hook to provide an observable global store",
+  "version": "0.0.0",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "index.d.ts",
+  "typings": "index.d.ts",
+  "files": [
+    "cjs",
+    "esm",
+    "typings"
+  ],
+  "author": "Mike Simmonds (https://mike.id)",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": ">=16.8"
+  },
+  "dependencies": {
+    "shallowequal": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/shallowequal": "^1.1.1",
+    "react": "^16.12.0"
+  }
+}

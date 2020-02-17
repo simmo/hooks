@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks'
-import useGeolocation from '.'
+import useGeoLocation from '.'
 
 const positions: Position[] = [
   [52.520007, 13.404954, 1559129501234],
@@ -41,21 +41,21 @@ Object.defineProperty(window.navigator, 'geolocation', {
   writable: true,
 })
 
-describe('useGeolocation', () => {
+describe('useGeoLocation', () => {
   beforeEach(() => {
     watchPositionMock.mockClear()
     clearWatchMock.mockClear()
   })
 
   test('returns initial null state', () => {
-    const { result } = renderHook(() => useGeolocation())
+    const { result } = renderHook(() => useGeoLocation())
 
     expect(result.current[0]).toBeNull()
     expect(result.current[1]).toBeNull()
   })
 
   test('returns current location', () => {
-    const { result } = renderHook(() => useGeolocation())
+    const { result } = renderHook(() => useGeoLocation())
     const { handleSuccess } = lastCallOf(watchPositionMock)
 
     act(() => {
@@ -71,7 +71,7 @@ describe('useGeolocation', () => {
       enableHighAccuracy: true,
     }
 
-    renderHook(() => useGeolocation(options))
+    renderHook(() => useGeoLocation(options))
 
     const { options: returnedOptions } = lastCallOf(watchPositionMock)
 
@@ -80,7 +80,7 @@ describe('useGeolocation', () => {
 
   test('option change should invalidate effect', () => {
     const initialProps = { enableHighAccuracy: true }
-    const { rerender } = renderHook(options => useGeolocation(options), {
+    const { rerender } = renderHook(options => useGeoLocation(options), {
       initialProps,
     })
 
@@ -94,7 +94,7 @@ describe('useGeolocation', () => {
   })
 
   test('handles a new position', () => {
-    const { result } = renderHook(() => useGeolocation())
+    const { result } = renderHook(() => useGeoLocation())
     const { handleSuccess } = lastCallOf(watchPositionMock)
 
     act(() => {
@@ -111,7 +111,7 @@ describe('useGeolocation', () => {
   })
 
   test('handles error', () => {
-    const { result } = renderHook(() => useGeolocation())
+    const { result } = renderHook(() => useGeoLocation())
     const { handleError } = lastCallOf(watchPositionMock)
     const error = { code: 3, message: 'Timeout' }
 

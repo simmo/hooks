@@ -1,0 +1,31 @@
+{
+  "name": "@hooks/title",
+  "description": "React hook to set the document title.",
+  "keywords": [
+    "react",
+    "hooks",
+    "useTitle",
+    "title"
+  ],
+  "version": "0.0.0",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "index.d.ts",
+  "typings": "index.d.ts",
+  "files": [
+    "cjs",
+    "esm",
+    "typings"
+  ],
+  "author": "Mike Simmonds (https://mike.id)",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": ">=16.8"
+  },
+  "devDependencies": {
+    "react": "^16.12.0"
+  }
+}
