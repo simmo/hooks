@@ -1,6 +1,12 @@
 {
-  "name": "@hooks/network-status",
-  "description": "React hook return network status details",
+  "name": "@hooks/title",
+  "description": "React hook to set the document title.",
+  "keywords": [
+    "react",
+    "hooks",
+    "useTitle",
+    "title"
+  ],
   "version": "0.0.0",
   "main": "cjs/index.js",
   "module": "esm/index.js",
@@ -13,6 +19,10 @@
   ],
   "author": "Mike Simmonds (https://mike.id)",
   "license": "MIT",
+  "scripts": {
+    "prepublishOnly": "yarn build",
+    "build": "node ../../scripts/build"
+  },
   "publishConfig": {
     "access": "public"
   },

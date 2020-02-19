@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import * as shallowEqual from 'shallowequal'
+import shallowEqual from 'shallowequal'
 import Store from './Store'
 
 type StateUpdater<State> = (state?: State) => State

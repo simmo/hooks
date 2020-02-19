@@ -1,6 +1,6 @@
 {
-  "name": "@hooks/boolean",
-  "description": "React hook to store a boolean",
+  "name": "@hooks/network-status",
+  "description": "React hook return network status details",
   "version": "0.0.0",
   "main": "cjs/index.js",
   "module": "esm/index.js",
@@ -13,6 +13,10 @@
   ],
   "author": "Mike Simmonds (https://mike.id)",
   "license": "MIT",
+  "scripts": {
+    "prepublishOnly": "yarn build",
+    "build": "node ../../scripts/build"
+  },
   "publishConfig": {
     "access": "public"
   },

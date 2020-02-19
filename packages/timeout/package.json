@@ -1,6 +1,6 @@
 {
-  "name": "@hooks/render-count",
-  "description": "React hook to record the re-render count",
+  "name": "@hooks/timeout",
+  "description": "React hook to wrap setTimeout",
   "version": "0.0.0",
   "main": "cjs/index.js",
   "module": "esm/index.js",
@@ -13,6 +13,10 @@
   ],
   "author": "Mike Simmonds (https://mike.id)",
   "license": "MIT",
+  "scripts": {
+    "prepublishOnly": "yarn build",
+    "build": "node ../../scripts/build"
+  },
   "publishConfig": {
     "access": "public"
   },

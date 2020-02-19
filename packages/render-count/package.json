@@ -1,6 +1,6 @@
 {
-  "name": "@hooks/geo-location",
-  "description": "React hook to return geo location details",
+  "name": "@hooks/render-count",
+  "description": "React hook to record the re-render count",
   "version": "0.0.0",
   "main": "cjs/index.js",
   "module": "esm/index.js",
@@ -13,6 +13,10 @@
   ],
   "author": "Mike Simmonds (https://mike.id)",
   "license": "MIT",
+  "scripts": {
+    "prepublishOnly": "yarn build",
+    "build": "node ../../scripts/build"
+  },
   "publishConfig": {
     "access": "public"
   },

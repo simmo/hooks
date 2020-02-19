@@ -1,12 +1,6 @@
 {
-  "name": "@hooks/title",
-  "description": "React hook to set the document title.",
-  "keywords": [
-    "react",
-    "hooks",
-    "useTitle",
-    "title"
-  ],
+  "name": "@hooks/raf",
+  "description": "React hook to wrap requestAnimationFrame",
   "version": "0.0.0",
   "main": "cjs/index.js",
   "module": "esm/index.js",
@@ -19,6 +13,10 @@
   ],
   "author": "Mike Simmonds (https://mike.id)",
   "license": "MIT",
+  "scripts": {
+    "prepublishOnly": "yarn build",
+    "build": "node ../../scripts/build"
+  },
   "publishConfig": {
     "access": "public"
   },
