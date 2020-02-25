@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import useBoolean from '../useBoolean'
+import useBoolean from '@hooks/boolean'
 
 export default function useMediaQuery(
   query: string,
