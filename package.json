@@ -7,7 +7,8 @@
     "test": "jest",
     "lint": "eslint --ext .tsx,.ts ./packages",
     "report": "node ./scripts/build-report.js",
-    "lerna": "lerna"
+    "lerna": "lerna",
+    "readme": "node ./scripts/generateReadme"
   },
   "prettier": {
     "tabWidth": 2,
