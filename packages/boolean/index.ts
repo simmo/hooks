@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react'
 
 /**
- *
  * @param initialValue The initial state for the value.
  * @returns Returns an array containing the value and a function to update it.
  */

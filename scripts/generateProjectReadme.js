@@ -5,15 +5,14 @@ const ts = require('typescript')
 const { writeFileAsync } = require('./utils')
 const cwd = process.cwd()
 const pkg = require(`${cwd}/package.json`)
-const [scope, name] = pkg.name.split()
 const template = `# ${pkg.name}
 
 ${pkg.description}
 
-![npm](https://img.shields.io/npm/v/${scope.replace(
+![npm](https://img.shields.io/npm/v/${pkg.name.replace(
   '@',
   ''
-)}/${name}?style=flat-square)
+)}?style=flat-square)
 
 ## Install
 
@@ -21,9 +20,17 @@ ${pkg.description}
 npm i ${pkg.name}
 \`\`\``
 
+const cleanCode = code => {
+  return code
+    .replace('\n', '')
+    .replace(/\s+/g, ' ')
+    .replace(', }', ' }')
+}
+
 async function run() {
   const file = `${cwd}/index.ts`
   const program = ts.createProgram([file], { allowJs: true })
+  // const checker = program.getTypeChecker()
   const sourceFile = program.getSourceFile(file)
   let hasExport = false
 
@@ -40,39 +47,83 @@ async function run() {
           readme.push('## Usage')
         }
 
+        // const symbol = checker.getSymbolAtLocation(node.name)
+        // console.log(symbol.valueDeclaration)
+        // console.log({
+        //   name: symbol.getName(),
+        //   documentation: ts.displayPartsToString(
+        //     symbol.getDocumentationComment(checker)
+        //   ),
+        //   type: checker.typeToString(
+        //     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        //     checker.getTypeOfSymbolAtLocation(symbol, symbol.valueDeclaration)
+        //   ),
+        // })
+
         hasExport = true
 
         readme.push(`### ${node.name.text}`)
 
         const jsDocParamComments = node.jsDoc
-          ? node.jsDoc.reduce((obj, doc) => {
-              doc.tags.forEach(tag => {
-                obj[tag.name.text] = tag.comment
-              })
+          ? node.jsDoc.reduce(
+              (obj, doc) => {
+                if (doc.tags.length) {
+                  doc.tags.forEach(tag => {
+                    if (ts.isJSDocParameterTag(tag)) {
+                      // console.log(tag)
+                      obj.parameters[tag.name.text] = tag.comment
+                    }
 
-              return obj
-            }, {})
-          : {}
+                    if (ts.isJSDocReturnTag(tag)) {
+                      obj.return = tag.comment
+                    }
+                  })
+                }
 
-        const returnType = node.type.getText(sourceFile)
+                return obj
+              },
+              { parameters: {}, return: null }
+            )
+          : { parameters: {}, return: null }
+
+        const returnType = node.type ? `: ${node.type.getText(sourceFile)}` : ''
 
         readme.push(
-          `\`\`\`ts\n${node.name.text}(${node.parameters
-            .map(param => param.getText(sourceFile))
-            .join(', ')})${returnType ? `: ${returnType}` : ''}\n\`\`\``
+          `\`\`\`ts\n${node.name.text}(${
+            node.parameters.length
+              ? node.parameters
+                  .map(param => param.getText(sourceFile))
+                  .join(', ')
+              : ''
+          })${returnType}\n\`\`\``
         )
 
         if (node.parameters.length) {
-          readme.push(`**Parameters**`)
-          node.parameters.forEach(param => {
-            readme.push(`#### \`${param.getText(sourceFile)}\``)
+          readme.push(`#### Parameters`)
 
-            const jsDocParamComment = jsDocParamComments[param.name.text]
+          console.log(node.declarationList)
+
+          node.parameters.forEach(param => {
+            readme.push(`##### \`${param.getText(sourceFile)}\``)
+
+            // console.log(JSON.stringify(param, null, 2))
+
+            // if (ts.isTypeReferenceNode(param.type)) {
+            //   console.log(param.declarationList)
+            // }
+
+            const jsDocParamComment =
+              jsDocParamComments.parameters[param.name.text]
 
             if (jsDocParamComment) {
               readme.push(jsDocParamComment)
             }
           })
+        }
+
+        if (jsDocParamComments.return) {
+          readme.push(`#### Return`)
+          readme.push(jsDocParamComments.return)
         }
       }
     }

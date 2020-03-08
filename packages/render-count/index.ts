@@ -1,9 +1,9 @@
 import { useRef, useEffect } from 'react'
 
 /**
- * @returns Returns the number of times the the hooks has been called.
+ * @returns Returns the number of times the hook has been called.
  */
-export default function useRenderCount() {
+export default function useRenderCount(): number {
   const renderCount = useRef(1)
 
   useEffect(() => {

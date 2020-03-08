@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react'
 
+/**
+ * @param options Passes PositionOptions through to the geolocation API - https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions
+ * @returns Returns an array containing the position and any position error.
+ */
 export default function useGeoLocation(
   options?: PositionOptions
 ): [Position, PositionError] {

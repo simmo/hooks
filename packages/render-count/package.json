@@ -1,6 +1,6 @@
 {
   "name": "@hooks/render-count",
-  "description": "React hook to record the re-render count",
+  "description": "React hook to record the render count",
   "keywords": [
     "react",
     "hooks",

@@ -7,7 +7,10 @@ interface NetworkStatus {
   online: boolean
 }
 
-export default function useNetworkStatus() {
+/**
+ * @returns Returns an object containing details about the network status.
+ */
+export default function useNetworkStatus(): NetworkStatus {
   const [status, setStatus] = useState<NetworkStatus>({
     online:
       typeof window !== 'undefined' ? window?.navigator?.onLine : undefined,
