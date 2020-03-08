@@ -2,7 +2,9 @@
 
 React hook to respond to media queries
 
-![npm](https://img.shields.io/npm/v/hooks/media-query?style=flat-square)
+![NPM version](https://img.shields.io/npm/v/@hooks/media-query?style=flat-square)
+![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
+![License](https://img.shields.io/npm/l/@hooks/media-query?style=flat-square)
 
 ## Install
 

@@ -9,10 +9,9 @@ const template = `# ${pkg.name}
 
 ${pkg.description}
 
-![npm](https://img.shields.io/npm/v/${pkg.name.replace(
-  '@',
-  ''
-)}?style=flat-square)
+![NPM version](https://img.shields.io/npm/v/${pkg.name}?style=flat-square)
+![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
+![License](https://img.shields.io/npm/l/${pkg.name}?style=flat-square)
 
 ## Install
 
