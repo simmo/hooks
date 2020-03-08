@@ -17,7 +17,7 @@ describe('useRaf', () => {
   })
 
   test('registers raf callback', () => {
-    renderHook(() => useRaf(() => {}))
+    renderHook(() => useRaf(jest.fn()))
 
     expect(requestAnimationFrameSpy).toHaveBeenCalled()
   })
@@ -62,7 +62,7 @@ describe('useRaf', () => {
   })
 
   test('cancels raf callback', () => {
-    const { unmount } = renderHook(() => useRaf(() => {}))
+    const { unmount } = renderHook(() => useRaf(jest.fn()))
 
     unmount()
 

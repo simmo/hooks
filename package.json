@@ -5,7 +5,7 @@
   ],
   "scripts": {
     "test": "jest",
-    "lint": "eslint --ext .tsx,.ts ./src",
+    "lint": "eslint --ext .tsx,.ts ./packages",
     "report": "node ./scripts/build-report.js",
     "lerna": "lerna"
   },
@@ -50,6 +50,10 @@
     "plugins": [
       "@typescript-eslint",
       "react-hooks"
+    ],
+    "ignorePatterns": [
+      "*.d.ts",
+      "node_modules/"
     ],
     "rules": {
       "@typescript-eslint/explicit-function-return-type": "off",

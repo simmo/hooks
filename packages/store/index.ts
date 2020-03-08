@@ -6,6 +6,7 @@ type StateUpdater<State> = (state?: State) => State
 
 interface Options<State> {
   actions?: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [action: string]: (...args: any) => StateUpdater<State>
   }
   initialState?: State
@@ -32,8 +33,8 @@ export default function createStore<State>(options: Options<State> = {}) {
       )
     : store.setState.bind(store)
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return <SelectedState extends State>(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     selector?: (state?: SelectedState) => any
   ) => {
     const calculateState = useCallback(
