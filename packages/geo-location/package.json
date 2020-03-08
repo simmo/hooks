@@ -10,7 +10,7 @@
     "location",
     "position"
   ],
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "cjs/index.js",
   "module": "esm/index.js",
   "types": "index.d.ts",
