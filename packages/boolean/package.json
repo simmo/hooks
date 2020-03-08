@@ -1,6 +1,13 @@
 {
   "name": "@hooks/boolean",
   "description": "React hook to store a boolean",
+  "keywords": [
+    "react",
+    "hooks",
+    "useBoolean",
+    "boolean",
+    "toggle"
+  ],
   "version": "0.0.0",
   "main": "cjs/index.js",
   "module": "esm/index.js",

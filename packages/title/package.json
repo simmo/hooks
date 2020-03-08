@@ -1,6 +1,6 @@
 {
   "name": "@hooks/title",
-  "description": "React hook to set the document title.",
+  "description": "React hook to set the document title",
   "keywords": [
     "react",
     "hooks",

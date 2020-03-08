@@ -1,6 +1,14 @@
 {
   "name": "@hooks/timeout",
-  "description": "React hook to wrap setTimeout",
+  "description": "React hook to delay function execution",
+  "keywords": [
+    "react",
+    "hooks",
+    "useTimeout",
+    "timeout",
+    "setTimeout",
+    "delay"
+  ],
   "version": "0.0.0",
   "main": "cjs/index.js",
   "module": "esm/index.js",

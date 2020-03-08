@@ -1,6 +1,12 @@
 {
   "name": "@hooks/render-count",
   "description": "React hook to record the re-render count",
+  "keywords": [
+    "react",
+    "hooks",
+    "useRenderCount",
+    "render"
+  ],
   "version": "0.0.0",
   "main": "cjs/index.js",
   "module": "esm/index.js",

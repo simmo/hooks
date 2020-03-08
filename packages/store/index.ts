@@ -11,10 +11,12 @@ interface Options<State> {
   initialState?: State
 }
 
-export default function createStore<State>({
-  actions,
-  initialState,
-}: Options<State> = {}) {
+/**
+ * @param options.actions An object of state update functions.
+ * @param options.initialState The initial state of the store.
+ */
+export default function createStore<State>(options: Options<State> = {}) {
+  const { actions, initialState } = options
   const store = new Store<State>(initialState)
 
   const boundActions = actions

@@ -1,6 +1,15 @@
 {
   "name": "@hooks/geo-location",
   "description": "React hook to return geo location details",
+  "keywords": [
+    "react",
+    "hooks",
+    "useGeoLocation",
+    "geo",
+    "geographic",
+    "location",
+    "position"
+  ],
   "version": "0.0.0",
   "main": "cjs/index.js",
   "module": "esm/index.js",

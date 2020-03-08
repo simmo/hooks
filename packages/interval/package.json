@@ -1,6 +1,13 @@
 {
   "name": "@hooks/interval",
   "description": "React hook to wrap setInterval",
+  "keywords": [
+    "react",
+    "hooks",
+    "useInterval",
+    "setInterval",
+    "interval"
+  ],
   "version": "0.0.0",
   "main": "cjs/index.js",
   "module": "esm/index.js",

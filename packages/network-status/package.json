@@ -1,6 +1,13 @@
 {
   "name": "@hooks/network-status",
   "description": "React hook return network status details",
+  "keywords": [
+    "react",
+    "hooks",
+    "useNetworkStatus",
+    "network",
+    "status"
+  ],
   "version": "0.0.0",
   "main": "cjs/index.js",
   "module": "esm/index.js",

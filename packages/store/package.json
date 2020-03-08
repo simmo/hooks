@@ -1,6 +1,11 @@
 {
   "name": "@hooks/store",
   "description": "React hook to provide an observable global store",
+  "keywords": [
+    "react",
+    "hooks",
+    "store"
+  ],
   "version": "0.0.0",
   "main": "cjs/index.js",
   "module": "esm/index.js",

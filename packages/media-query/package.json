@@ -1,6 +1,14 @@
 {
   "name": "@hooks/media-query",
   "description": "React hook to respond to media queries",
+  "keywords": [
+    "react",
+    "hooks",
+    "useMediaQuery",
+    "media",
+    "query",
+    "css"
+  ],
   "version": "0.0.0",
   "main": "cjs/index.js",
   "module": "esm/index.js",
