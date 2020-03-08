@@ -12,7 +12,6 @@ A modular collection of React hooks.
 
 ![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
 ![License](https://img.shields.io/github/license/simmo/hooks?style=flat-square)
-![Greenkeeper](https://badges.greenkeeper.io/zone/frontend.svg?style=flat-square)
 
 ## Packages
 
