@@ -34,7 +34,7 @@ async function run() {
         ''
       )}/${name}?style=flat-square)`
 
-      return `\n| [${pkg.name}](https://github.com/simmo/hooks/tree/master/packages/${item.name}) | ${npmBadge} | ${pkg.description} |`
+      return `\n| [${pkg.name}](packages/${item.name}) | ${npmBadge} | ${pkg.description} |`
     })
 
   await writeFileAsync('README.md', `${template}${packages}`)
