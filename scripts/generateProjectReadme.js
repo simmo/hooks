@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires, no-undef */
 
 const ts = require('typescript')
-const { writeFileAsync } = require('./utils')
+const { writeFileAsync, existsFileAsync } = require('./utils')
 const cwd = process.cwd()
 const pkg = require(`${cwd}/package.json`)
 const template = `# ${pkg.name}
@@ -28,6 +28,9 @@ const cleanCode = code => {
 
 async function run() {
   const file = `${cwd}/index.ts`
+  const hasStoryFile = await existsFileAsync(`${cwd}/StoryComponent.ts`)
+  let hookName = ''
+
   const program = ts.createProgram([file], { allowJs: true })
   // const checker = program.getTypeChecker()
   const sourceFile = program.getSourceFile(file)
@@ -62,6 +65,7 @@ async function run() {
         hasExport = true
 
         readme.push(`### ${node.name.text}`)
+        hookName = node.name.text
 
         const jsDocParamComments = node.jsDoc
           ? node.jsDoc.reduce(
@@ -124,11 +128,30 @@ async function run() {
           readme.push(`#### Return`)
           readme.push(jsDocParamComments.return)
         }
+
+        if (hasStoryFile) {
+          readme.push(`
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import StoryComponent from './StoryComponent'
+
+<Meta title="${hookName}" component={StoryComponent} />
+
+## Example
+<Preview>
+  <Story name="Usage">
+    <StoryComponent />
+  </Story>
+</Preview>
+          `)
+        }
       }
     }
   })
 
-  await writeFileAsync(`${cwd}/README.md`, `${readme.join('\n\n')}\n`)
+  await writeFileAsync(
+    `${cwd}/README${storyFile ? '.story.mdx' : '.md'}`,
+    `${readme.join('\n\n')}\n`
+  )
 }
 
 run()
