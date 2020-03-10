@@ -9,7 +9,8 @@
     "report": "node ./scripts/build-report.js",
     "lerna": "lerna",
     "readme": "node ./scripts/generateReadme",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook",
+    "build-storybook": "build-storybook -c .storybook"
   },
   "prettier": {
     "tabWidth": 2,
