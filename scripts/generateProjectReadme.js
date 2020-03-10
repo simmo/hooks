@@ -28,7 +28,7 @@ const cleanCode = code => {
 
 async function run() {
   const file = `${cwd}/index.ts`
-  const hasStoryFile = await existsFileAsync(`${cwd}/StoryComponent.ts`)
+  const hasStoryFile = await existsFileAsync(`${cwd}/StoryComponent.tsx`)
   let hookName = ''
 
   const program = ts.createProgram([file], { allowJs: true })
@@ -149,7 +149,7 @@ import StoryComponent from './StoryComponent'
   })
 
   await writeFileAsync(
-    `${cwd}/README${storyFile ? '.story.mdx' : '.md'}`,
+    `${cwd}/README${hasStoryFile ? '.story.mdx' : '.md'}`,
     `${readme.join('\n\n')}\n`
   )
 }

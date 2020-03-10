@@ -7,4 +7,4 @@ exports.readDirAsync = promisify(fs.readdir)
 
 exports.writeFileAsync = promisify(fs.writeFile)
 
-exports.existsFileAsync = promisify(fs.existsSync)
+exports.existsFileAsync = promisify(fs.exists)
