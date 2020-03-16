@@ -35,9 +35,9 @@ import StoryComponent from './StoryComponent'
 
 ## Example
 <Preview>
-<Story name="Usage">
-<StoryComponent />
-</Story>
+  <Story name="Usage">
+    <StoryComponent />
+  </Story>
 </Preview>
   `)
 }
