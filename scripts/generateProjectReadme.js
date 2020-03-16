@@ -26,6 +26,22 @@ const cleanCode = code => {
     .replace(', }', ' }')
 }
 
+const writeStory = (readme, { name }) => {
+  readme.push(`
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import StoryComponent from './StoryComponent'
+
+<Meta title="${name}" component={StoryComponent} />
+
+## Example
+<Preview>
+<Story name="Usage">
+<StoryComponent />
+</Story>
+</Preview>
+  `)
+}
+
 async function run() {
   const file = `${cwd}/index.ts`
   const hasStoryFile = await existsFileAsync(`${cwd}/StoryComponent.tsx`)
@@ -128,30 +144,17 @@ async function run() {
           readme.push(`#### Return`)
           readme.push(jsDocParamComments.return)
         }
-
-        if (hasStoryFile) {
-          readme.push(`
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
-import StoryComponent from './StoryComponent'
-
-<Meta title="${hookName}" component={StoryComponent} />
-
-## Example
-<Preview>
-  <Story name="Usage">
-    <StoryComponent />
-  </Story>
-</Preview>
-          `)
-        }
       }
     }
   })
 
-  await writeFileAsync(
-    `${cwd}/README${hasStoryFile ? '.story.mdx' : '.md'}`,
-    `${readme.join('\n\n')}\n`
-  )
+  await writeFileAsync(`${cwd}/README.md`, `${readme.join('\n\n')}\n`)
+
+  if (hasStoryFile) {
+    writeStory(readme, { name: hookName })
+
+    await writeFileAsync(`${cwd}/README.story.mdx`, `${readme.join('\n\n')}\n`)
+  }
 }
 
 run()
