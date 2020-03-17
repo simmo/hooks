@@ -17,6 +17,7 @@ See `./packages/*` for individual package installation details.
 | [@hooks/interval](packages/interval) | ![npm](https://img.shields.io/npm/v/@hooks/interval?style=flat-square) | React hook to wrap setInterval |,
 | [@hooks/media-query](packages/media-query) | ![npm](https://img.shields.io/npm/v/@hooks/media-query?style=flat-square) | React hook to respond to media queries |,
 | [@hooks/network-status](packages/network-status) | ![npm](https://img.shields.io/npm/v/@hooks/network-status?style=flat-square) | React hook return network status details |,
+| [@hooks/queue](packages/queue) | ![npm](https://img.shields.io/npm/v/@hooks/queue?style=flat-square) | React hook to manage a queue |,
 | [@hooks/raf](packages/raf) | ![npm](https://img.shields.io/npm/v/@hooks/raf?style=flat-square) | React hook to wrap requestAnimationFrame |,
 | [@hooks/render-count](packages/render-count) | ![npm](https://img.shields.io/npm/v/@hooks/render-count?style=flat-square) | React hook to record the render count |,
 | [@hooks/store](packages/store) | ![npm](https://img.shields.io/npm/v/@hooks/store?style=flat-square) | React hook to provide an observable global store |,
