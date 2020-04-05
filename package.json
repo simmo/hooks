@@ -11,6 +11,7 @@
     "readme": "node ./scripts/generateReadme"
   },
   "prettier": {
+    "arrowParens": "avoid",
     "tabWidth": 2,
     "semi": false,
     "singleQuote": true,
