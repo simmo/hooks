@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react'
+import { useRef } from 'react'
 
 class Queue<Item> {
   private queue: Item[] = []
