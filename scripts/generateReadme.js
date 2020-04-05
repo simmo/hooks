@@ -34,7 +34,7 @@ async function run() {
       return `\n| [${pkg.name}](packages/${item.name}) | ${npmBadge} | ${pkg.description} |`
     })
 
-  await writeFileAsync('README.md', `${template}${packages}`)
+  await writeFileAsync('README.md', `${template}${packages}\n`)
 }
 
 run()
