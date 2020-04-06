@@ -31,10 +31,11 @@ async function run() {
       const pkg = require(`${cwd}/packages/${item.name}/package.json`)
       const npmBadge = `![npm](https://img.shields.io/npm/v/${pkg.name}?style=flat-square)`
 
-      return `\n| [${pkg.name}](packages/${item.name}) | ${npmBadge} | ${pkg.description} |`
+      return `| [${pkg.name}](packages/${item.name}) | ${npmBadge} | ${pkg.description} |`
     })
+    .join('\n')
 
-  await writeFileAsync('README.md', `${template}${packages}`)
+  await writeFileAsync('README.md', `${template}\n${packages}\n`)
 }
 
 run()
