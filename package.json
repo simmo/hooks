@@ -9,8 +9,8 @@
     "report": "node ./scripts/build-report.js",
     "lerna": "lerna",
     "readme": "node ./scripts/generateReadme",
-    "storybook": "start-storybook",
-    "build-storybook": "build-storybook -c .storybook"
+    "storybook": "start-storybook --docs",
+    "build-storybook": "build-storybook --docs -c .storybook"
   },
   "prettier": {
     "arrowParens": "avoid",
