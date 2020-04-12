@@ -12,13 +12,14 @@ See `./packages/*` for individual package installation details.
 
 | Package | Version | Description |
 | ------- | ------- | ----------- |
+| [@hooks/before-unload](packages/before-unload) | ![npm](https://img.shields.io/npm/v/@hooks/before-unload?style=flat-square) | React hook to provide a message before the page is unloaded |
 | [@hooks/boolean](packages/boolean) | ![npm](https://img.shields.io/npm/v/@hooks/boolean?style=flat-square) | React hook to store a boolean |
 | [@hooks/geo-location](packages/geo-location) | ![npm](https://img.shields.io/npm/v/@hooks/geo-location?style=flat-square) | React hook to return geo location details |
 | [@hooks/interval](packages/interval) | ![npm](https://img.shields.io/npm/v/@hooks/interval?style=flat-square) | React hook to wrap setInterval |
 | [@hooks/media-query](packages/media-query) | ![npm](https://img.shields.io/npm/v/@hooks/media-query?style=flat-square) | React hook to respond to media queries |
 | [@hooks/mount](packages/mount) | ![npm](https://img.shields.io/npm/v/@hooks/mount?style=flat-square) | React hook to execute callback on component mount |
 | [@hooks/network-status](packages/network-status) | ![npm](https://img.shields.io/npm/v/@hooks/network-status?style=flat-square) | React hook return network status details |
-| [@hooks/previous](packages/previous) | ![npm](https://img.shields.io/npm/v/@hooks/previous?style=flat-square) | React hook to capture and remember values between renders |
+| [@hooks/previous](packages/previous) | ![npm](https://img.shields.io/npm/v/@hooks/previous?style=flat-square) | React hook to remember a value between renders |
 | [@hooks/queue](packages/queue) | ![npm](https://img.shields.io/npm/v/@hooks/queue?style=flat-square) | React hook to manage a queue |
 | [@hooks/raf](packages/raf) | ![npm](https://img.shields.io/npm/v/@hooks/raf?style=flat-square) | React hook to wrap requestAnimationFrame |
 | [@hooks/render-count](packages/render-count) | ![npm](https://img.shields.io/npm/v/@hooks/render-count?style=flat-square) | React hook to record the render count |
