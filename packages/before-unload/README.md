@@ -1,6 +1,6 @@
 # @hooks/before-unload
 
-React hook to provide a message before the page is unloaded
+React hook to provide a message prompt before the page is unloaded
 
 ![NPM version](https://img.shields.io/npm/v/@hooks/before-unload?style=flat-square)
 ![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)

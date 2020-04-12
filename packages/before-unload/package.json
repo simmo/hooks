@@ -1,6 +1,6 @@
 {
   "name": "@hooks/before-unload",
-  "description": "React hook to provide a message before the page is unloaded",
+  "description": "React hook to provide a message prompt before the page is unloaded",
   "keywords": [
     "react",
     "hooks",
