@@ -1,4 +1,4 @@
-# @hooks/before-unload
+# 🎒 @hooks/before-unload
 
 React hook to provide a message prompt before the page is unloaded
 

@@ -1,4 +1,4 @@
-# @hooks/media-query
+# 🎒 @hooks/media-query
 
 React hook to respond to media queries
 

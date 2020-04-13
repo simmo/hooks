@@ -1,4 +1,4 @@
-# @hooks/store
+# 🎒 @hooks/store
 
 React hook to provide an observable global store
 

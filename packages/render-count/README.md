@@ -1,4 +1,4 @@
-# @hooks/render-count
+# 🎒 @hooks/render-count
 
 React hook to record the render count
 

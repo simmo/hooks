@@ -1,4 +1,4 @@
-# @hooks/timeout
+# 🎒 @hooks/timeout
 
 React hook to delay function execution
 
