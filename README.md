@@ -1,10 +1,15 @@
 # React Hooks
+
 A modular collection of React hooks.
 
 🦄 TypeScript support • 🐐 Fully tested • 👾 Server rendering compatible
 
 ![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
 ![License](https://img.shields.io/github/license/simmo/hooks?style=flat-square)
+
+## Help
+
+Run `yarn go`
 
 ## Packages
 
