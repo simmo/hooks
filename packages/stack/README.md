@@ -1,4 +1,4 @@
-# @hooks/stack
+# 🎒 @hooks/stack
 
 React hook to manage a stack
 

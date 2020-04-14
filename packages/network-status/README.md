@@ -1,4 +1,4 @@
-# @hooks/network-status
+# 🎒 @hooks/network-status
 
 React hook return network status details
 

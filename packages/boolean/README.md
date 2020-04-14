@@ -1,4 +1,4 @@
-# @hooks/boolean
+# 🎒 @hooks/boolean
 
 React hook to store a boolean
 

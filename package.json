@@ -8,7 +8,7 @@
     "lint": "eslint --ext .tsx,.ts ./packages",
     "report": "node ./scripts/build-report.js",
     "lerna": "lerna",
-    "readme": "node ./scripts/generateReadme"
+    "go": "node ./scripts"
   },
   "prettier": {
     "arrowParens": "avoid",
@@ -72,13 +72,16 @@
     "@types/testing-library__react-hooks": "^3.2.0",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
+    "chalk": "^4.0.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react-hooks": "^3.0.0",
+    "inquirer": "^7.1.0",
     "jest": "^25.2.7",
     "jest-serializer-path": "^0.1.15",
     "lerna": "^3.20.2",
+    "listr": "^0.14.3",
     "ora": "^4.0.3",
     "prettier": "^2.0.1",
     "react": "^16.12.0",
