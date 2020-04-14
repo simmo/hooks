@@ -94,10 +94,3 @@ const script = createScript({
 require.main === module && script.run()
 
 module.exports = script
-
-// const difference = diff('a', 'a', {
-//   aAnnotation: 'Old',
-//   aColor: chalk.red,
-//   bAnnotation: 'New',
-//   bColor: chalk.green,
-// })
