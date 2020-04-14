@@ -8,7 +8,7 @@ const unloadMessage = 'Do you want to save?'
 const beforeUnloadEvent = 'beforeunload'
 
 interface ExampleEvent {
-  preventDefault: jest.Mock<any, any>
+  preventDefault: jest.Mock
   returnValue?: string
 }
 
