@@ -1,4 +1,4 @@
-# @hooks/queue
+# 🎒 @hooks/queue
 
 React hook to manage a queue
 

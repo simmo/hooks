@@ -1,4 +1,4 @@
-# @hooks/interval
+# 🎒 @hooks/interval
 
 React hook to wrap setInterval
 

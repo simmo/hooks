@@ -1,4 +1,4 @@
-# @hooks/title
+# 🎒 @hooks/title
 
 React hook to set the document title
 

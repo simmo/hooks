@@ -1,13 +1,10 @@
-{
-  "name": "@hooks/render-count",
-  "description": "React hook to record the render count",
+module.exports = ({ package, keywords, description }) => `{
+  "name": "@hooks/${package}",
+  "description": "${description}",
   "keywords": [
-    "react",
-    "hooks",
-    "useRenderCount",
-    "render"
+${keywords.map(keyword => `    "${keyword}"`).join(',\n')}
   ],
-  "version": "0.0.3",
+  "version": "0.0.0",
   "main": "cjs/index.js",
   "module": "esm/index.js",
   "types": "typings/index.d.ts",
@@ -21,7 +18,7 @@
   "license": "MIT",
   "scripts": {
     "prepublishOnly": "yarn build",
-    "build": "node ../../scripts/build"
+    "build": "node ../../scripts/build",
   },
   "publishConfig": {
     "access": "public"
@@ -29,7 +26,8 @@
   "peerDependencies": {
     "react": ">=16.8"
   },
+  "dependencies": {},
   "devDependencies": {
     "react": "^16.12.0"
   }
-}
+}`
