@@ -12,7 +12,7 @@ const {
 } = require('../../utils')
 const cwd = process.cwd()
 
-const writeStory = (readme, { name }) => {
+const createStory = (readme, { name }) => {
   readme.push(`
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import StoryComponent from './StoryComponent'
@@ -29,7 +29,7 @@ import StoryComponent from './StoryComponent'
 }
 
 const createReadme = ({ name, description }) => [
-  `# 🎒 ${name} ciao
+  `# 🎒 ${name}
 
 ${description}
 
@@ -175,52 +175,40 @@ const script = createScript({
               },
             },
             {
-              title: 'Generate Story',
-              task: async () => {
-                console.log('generating storyu')
-
-                try {
-                  console.log('testing')
-                  const blah = await accessFileAsync(
-                    `${packagePath}/StoryComponent.tsx`
-                  )
-                  console.log('blah')
-                } catch (e) {
-                  console.log('error')
-                  console.log(e)
-                }
-
-                const hasStoryFile = await accessFileAsync(
-                  `${packagePath}/StoryComponent.tsx`
-                )
-
-                console.log(hasStoryFile)
-
-                if (hasStoryFile) {
-                  const content = prettier.format(`${readme.join('\n\n')}\n`, {
-                    parser: 'markdown',
-                  })
-
-                  writeStory(content, { name: hookName })
-
-                  return await writeFileAsync(
-                    `${cwd}/README.story.mdx`,
-                    content
-                  )
-                }
-
-                return Promise.resolve()
-              },
-            },
-            {
               title: 'Save',
               task: async () => {
-                console.log('saving')
                 const content = prettier.format(`${readme.join('\n\n')}\n`, {
                   parser: 'markdown',
                 })
 
                 return await writeFileAsync(`${packagePath}/README.md`, content)
+              },
+            },
+            {
+              title: 'Generate story file',
+              skip: async () => {
+                try {
+                  await accessFileAsync(`${packagePath}/StoryComponent.tsx`)
+
+                  // to execute the step we need to return a falsy value
+                  return false
+                } catch (e) {
+                  // if accessFileAsync errors there is no file, so we can skip the step
+                  // to skip it we need to return a truthy value
+                  return 'No story component, skipping story file'
+                }
+              },
+              task: async () => {
+                createStory(readme, { name })
+
+                const content = prettier.format(`${readme.join('\n\n')}\n`, {
+                  parser: 'markdown',
+                })
+
+                return await writeFileAsync(
+                  `${packagePath}/README.story.mdx`,
+                  content
+                )
               },
             },
           ])
