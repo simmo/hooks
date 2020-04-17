@@ -4,10 +4,32 @@ const { prompt } = require('inquirer')
 const prettier = require('prettier')
 const Listr = require('listr')
 const ts = require('typescript')
-const { createScript, writeFileAsync, getAllPackages } = require('../../utils')
+const {
+  createScript,
+  writeFileAsync,
+  getAllPackages,
+  accessFileAsync,
+} = require('../../utils')
 const cwd = process.cwd()
+
+const writeStory = (readme, { name }) => {
+  readme.push(`
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import StoryComponent from './StoryComponent'
+
+<Meta title="${name}" component={StoryComponent} />
+
+## Example
+<Preview>
+  <Story name="Usage">
+    <StoryComponent />
+  </Story>
+</Preview>
+  `)
+}
+
 const createReadme = ({ name, description }) => [
-  `# 🎒 ${name}
+  `# 🎒 ${name} ciao
 
 ${description}
 
@@ -34,6 +56,8 @@ const script = createScript({
         choices,
       },
     ])
+
+    // TODO: warn empty
 
     const tasks = new Listr(
       packages.map(package => ({
@@ -151,8 +175,47 @@ const script = createScript({
               },
             },
             {
+              title: 'Generate Story',
+              task: async () => {
+                console.log('generating storyu')
+
+                try {
+                  console.log('testing')
+                  const blah = await accessFileAsync(
+                    `${packagePath}/StoryComponent.tsx`
+                  )
+                  console.log('blah')
+                } catch (e) {
+                  console.log('error')
+                  console.log(e)
+                }
+
+                const hasStoryFile = await accessFileAsync(
+                  `${packagePath}/StoryComponent.tsx`
+                )
+
+                console.log(hasStoryFile)
+
+                if (hasStoryFile) {
+                  const content = prettier.format(`${readme.join('\n\n')}\n`, {
+                    parser: 'markdown',
+                  })
+
+                  writeStory(content, { name: hookName })
+
+                  return await writeFileAsync(
+                    `${cwd}/README.story.mdx`,
+                    content
+                  )
+                }
+
+                return Promise.resolve()
+              },
+            },
+            {
               title: 'Save',
               task: async () => {
+                console.log('saving')
                 const content = prettier.format(`${readme.join('\n\n')}\n`, {
                   parser: 'markdown',
                 })
@@ -163,7 +226,7 @@ const script = createScript({
           ])
         },
       })),
-      { concurrent: 2, exitOnError: false }
+      { concurrent: 2 }
     )
 
     return await tasks.run()

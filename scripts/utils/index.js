@@ -7,7 +7,8 @@ const chalk = require('chalk')
 const readDirAsync = promisify(fs.readdir)
 const writeFileAsync = promisify(fs.writeFile)
 const readFileAsync = promisify(fs.readFile)
-const existsFileAsync = promisify(fs.exists)
+const accessFileAsync = promisify(fs.access)
+
 const header = title => {
   console.clear()
 
@@ -21,7 +22,7 @@ const header = title => {
 exports.readDirAsync = readDirAsync
 exports.writeFileAsync = writeFileAsync
 exports.readFileAsync = readFileAsync
-exports.existsFileAsync = existsFileAsync
+exports.accessFileAsync = accessFileAsync
 exports.header = header
 
 exports.getAllPackages = async () => {
