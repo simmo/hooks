@@ -214,7 +214,7 @@ const script = createScript({
           ])
         },
       })),
-      { concurrent: 2 }
+      { concurrent: 2, exitOnError: false }
     )
 
     return await tasks.run()
