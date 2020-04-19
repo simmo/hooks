@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-const { prompt } = require('inquirer')
 const prettier = require('prettier')
 const Listr = require('listr')
 const ts = require('typescript')
@@ -9,6 +8,7 @@ const {
   writeFileAsync,
   getAllPackages,
   accessFileAsync,
+  emptyPromptRetry,
 } = require('../../utils')
 const cwd = process.cwd()
 
@@ -48,20 +48,26 @@ const script = createScript({
   name: 'Generate package README',
   task: async () => {
     const choices = await getAllPackages()
-    const { packages } = await prompt([
-      {
-        name: 'packages',
-        message: 'Which packages?',
-        type: 'checkbox',
-        choices,
-      },
-    ])
-
-    // TODO: warn empty
+    const packages = await emptyPromptRetry(
+      [
+        {
+          name: 'packages',
+          message: 'Which packages?',
+          type: 'checkbox',
+          choices,
+        },
+      ],
+      3
+    )
 
     const tasks = new Listr(
       packages.map(package => ({
         title: package,
+        skip: () =>
+          // if we have no packages selected we skip the steps entirely (with a truthy value)
+          packages.length === 0
+            ? 'No packages selected'
+            : Promise.resolve(false),
         task: () => {
           const packagePath = `${cwd}/packages/${package}`
           const { name, description } = require(`${packagePath}/package.json`)
