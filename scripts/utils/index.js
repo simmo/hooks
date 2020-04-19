@@ -3,6 +3,7 @@
 const fs = require('fs')
 const { promisify } = require('util')
 const chalk = require('chalk')
+const { prompt } = require('inquirer')
 
 const readDirAsync = promisify(fs.readdir)
 const writeFileAsync = promisify(fs.writeFile)
@@ -43,3 +44,28 @@ exports.createScript = ({ name, task }) => ({
     console.log('')
   },
 })
+
+exports.emptyPromptRetry = async (promptArg, times = 2) => {
+  let results = []
+  const [firstElement, ...otherElements] = promptArg
+  const { name: passedName } = firstElement
+
+  for (let i = 0; i <= times - 1; i++) {
+    if (results.length === 0) {
+      const selection = await prompt([
+        {
+          ...firstElement,
+          message:
+            i !== 0
+              ? `Seems like you haven't selected an option, please select one. ${firstElement.message}`
+              : firstElement.message,
+        },
+        ...otherElements,
+      ])
+
+      results = selection[passedName]
+    }
+  }
+
+  return Promise.resolve(results)
+}
