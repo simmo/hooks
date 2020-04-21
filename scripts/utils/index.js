@@ -3,7 +3,6 @@
 const fs = require('fs')
 const { promisify } = require('util')
 const chalk = require('chalk')
-const { prompt } = require('inquirer')
 
 const readDirAsync = promisify(fs.readdir)
 const writeFileAsync = promisify(fs.writeFile)
