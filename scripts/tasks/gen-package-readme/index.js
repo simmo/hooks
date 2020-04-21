@@ -1,11 +1,33 @@
 #!/usr/bin/env node
 
-const { prompt } = require('inquirer')
 const prettier = require('prettier')
+const { prompt } = require('inquirer')
 const Listr = require('listr')
 const ts = require('typescript')
-const { createScript, writeFileAsync, getAllPackages } = require('../../utils')
+const {
+  createScript,
+  writeFileAsync,
+  getAllPackages,
+  accessFileAsync,
+} = require('../../utils')
 const cwd = process.cwd()
+
+const createStory = (readme, { name }) => {
+  readme.push(`
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import StoryComponent from './StoryComponent'
+
+<Meta title="${name}" component={StoryComponent} />
+
+## Example
+<Preview>
+  <Story name="Usage">
+    <StoryComponent />
+  </Story>
+</Preview>
+  `)
+}
+
 const createReadme = ({ name, description }) => [
   `# 🎒 ${name}
 
@@ -31,6 +53,10 @@ const script = createScript({
         name: 'packages',
         message: 'Which packages?',
         type: 'checkbox',
+        validate: choice =>
+          choice.length === 0
+            ? "Seems like you haven't selected an option, please select one"
+            : true,
         choices,
       },
     ])
@@ -158,6 +184,33 @@ const script = createScript({
                 })
 
                 return await writeFileAsync(`${packagePath}/README.md`, content)
+              },
+            },
+            {
+              title: 'Generate story file',
+              skip: async () => {
+                try {
+                  await accessFileAsync(`${packagePath}/StoryComponent.tsx`)
+
+                  // to execute the step we need to return a falsy value
+                  return false
+                } catch (e) {
+                  // if accessFileAsync errors there is no file, so we can skip the step
+                  // to skip it we need to return a truthy value
+                  return 'No story component, skipping story file'
+                }
+              },
+              task: async () => {
+                createStory(readme, { name })
+
+                const content = prettier.format(`${readme.join('\n\n')}\n`, {
+                  parser: 'markdown',
+                })
+
+                return await writeFileAsync(
+                  `${packagePath}/README.story.mdx`,
+                  content
+                )
               },
             },
           ])

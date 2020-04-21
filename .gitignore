@@ -5,3 +5,4 @@ esm
 typings
 *.log
 .yarn
+storybook-static
