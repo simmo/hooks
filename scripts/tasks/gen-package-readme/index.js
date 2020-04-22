@@ -223,7 +223,7 @@ const script = createScript({
         type: 'checkbox',
         validate: choice =>
           choice.length === 0
-            ? "Seems like you haven't selected an option, please select one"
+            ? "It seems like you haven't selected an option, please select one"
             : true,
         choices,
       },
