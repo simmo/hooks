@@ -4,6 +4,7 @@ const prettier = require('prettier')
 const { prompt } = require('inquirer')
 const Listr = require('listr')
 const ts = require('typescript')
+const chalk = require('chalk')
 const {
   createScript,
   writeFileAsync,
@@ -243,7 +244,10 @@ const script = createScript({
       if (errors.length > 0) {
         const message =
           'The following packages could not be built:' +
-          errors.reduce((agg, error, i) => `${agg} ${error.package}${i === errors.length - 1 ? '.' : ','}`, '') +
+          errors.reduce(
+            (agg, error, i) =>
+              `${agg} ${chalk.red(error.package)}${i === errors.length - 1 ? '.' : ','}`, ''
+          ) +
           '\nSelect any packages you want to retry.'
 
         const { retryPackages } = await prompt([
@@ -256,7 +260,10 @@ const script = createScript({
         ])
 
         const errorTasks = await new Listr(
-          generatePackagesScript(retryPackages, error => console.log(error.verbose)),
+          // we will log the errors to the console for this second attempt
+          generatePackagesScript(retryPackages, error => console.log(
+            `${error.package}:`, error.verbose
+          )),
           {
             concurrent: 2,
             exitOnError: false,
