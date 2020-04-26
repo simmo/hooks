@@ -7,12 +7,12 @@ const positions: Position[] = [
   [37.774929, -122.419416, 1559129701234],
 ].map(([latitude, longitude, timestamp]) => ({
   coords: {
-    latitude,
-    longitude,
     accuracy: 1.1,
     altitude: null,
     altitudeAccuracy: null,
     heading: null,
+    latitude,
+    longitude,
     speed: null,
   },
   timestamp,
@@ -29,14 +29,14 @@ const watchPositionMock = jest.fn(
     handleSuccess: Function,
     handleError: Function,
     options: PositionOptions
-  ) => ({ handleSuccess, handleError, options })
+  ) => ({ handleError, handleSuccess, options })
 )
 const clearWatchMock = jest.fn()
 
 Object.defineProperty(window.navigator, 'geolocation', {
   value: {
-    watchPosition: watchPositionMock,
     clearWatch: clearWatchMock,
+    watchPosition: watchPositionMock,
   },
   writable: true,
 })

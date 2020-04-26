@@ -62,6 +62,7 @@
     ],
     "rules": {
       "@typescript-eslint/explicit-function-return-type": "off",
+      "sort-keys": "error",
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn"
     }

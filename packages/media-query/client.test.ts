@@ -7,10 +7,10 @@ describe('useMediaQuery', () => {
 
   if ('window' in global) {
     window.matchMedia = jest.fn().mockImplementation(query => ({
+      addListener,
       matches: false,
       media: query,
       onchange: null,
-      addListener,
       removeListener,
     }))
   }
