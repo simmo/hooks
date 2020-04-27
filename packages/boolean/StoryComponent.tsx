@@ -1,13 +1,13 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import useBoolean from '.'
 
-export default () => {
+export default function StoryComponent() {
   const [value, toggle] = useBoolean(true)
 
   return (
-    <Fragment>
+    <>
       <p>The value is now {value ? 'true' : 'false'}</p>
       <button onClick={() => toggle()}>Toggle</button>
-    </Fragment>
+    </>
   )
 }
