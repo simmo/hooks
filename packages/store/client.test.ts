@@ -62,23 +62,23 @@ describe('createStore', () => {
   describe('custom actions', () => {
     test('returns defined actions', () => {
       const useExampleStore = createStore<string[]>({
-        initialState: [],
         actions: {
-          reset: () => () => [],
           add: name => prevState => [...prevState, name],
+          reset: () => () => [],
         },
+        initialState: [],
       })
       const { result } = renderHook(() => useExampleStore())
 
-      expect(Object.keys(result.current[1])).toEqual(['reset', 'add'])
+      expect(Object.keys(result.current[1])).toEqual(['add', 'reset'])
     })
 
     test('action provides current state', () => {
       const useExampleStore = createStore<string[]>({
-        initialState: ['A'],
         actions: {
           add: name => prevState => [...prevState, name],
         },
+        initialState: ['A'],
       })
       const { result } = renderHook(() => useExampleStore())
 
@@ -100,7 +100,7 @@ describe('createStore', () => {
 
     test('subscribes to updates', () => {
       const useExampleStore = createStore<State>({
-        initialState: { name: 'John', age: 30 },
+        initialState: { age: 30, name: 'John' },
       })
 
       const a = renderHook(() => useExampleStore())
@@ -118,8 +118,8 @@ describe('createStore', () => {
         }))
       })
 
-      expect(a.result.current[0]).toEqual({ name: 'Dave', age: 30 })
-      expect(b.result.current[0]).toEqual({ name: 'Dave', age: 30 })
+      expect(a.result.current[0]).toEqual({ age: 30, name: 'Dave' })
+      expect(b.result.current[0]).toEqual({ age: 30, name: 'Dave' })
       expect(c.result.current[0]).toBe(cInitial)
 
       act(() => {
@@ -134,7 +134,7 @@ describe('createStore', () => {
 
     test('unsubscribes to updates', () => {
       const useExampleStore = createStore<State>({
-        initialState: { name: 'John', age: 30 },
+        initialState: { age: 30, name: 'John' },
       })
 
       const a = renderHook(() => useExampleStore())
