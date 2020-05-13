@@ -81,7 +81,7 @@
     "@storybook/react": "^5.3.14",
     "@testing-library/react-hooks": "^3.2.1",
     "@types/jest": "^25.1.5",
-    "@types/node": "^13.11.0",
+    "@types/node": "^14.0.1",
     "@types/react": "^16.9.32",
     "@types/react-dom": "^16.9.6",
     "@types/testing-library__react-hooks": "^3.2.0",
