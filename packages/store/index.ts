@@ -5,38 +5,20 @@ import Store from './Store'
 type StateUpdater<State> = (state?: State) => State
 
 interface Options<State> {
-  actions?: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    [action: string]: (...args: any) => StateUpdater<State>
-  }
   initialState?: State
 }
 
 /**
- * @param options.actions An object of state update functions.
  * @param options.initialState The initial state of the store.
  */
 export default function createStore<State>(options: Options<State> = {}) {
-  const { actions, initialState } = options
+  const { initialState } = options
   const store = new Store<State>(initialState)
-
-  const boundActions = actions
-    ? Object.entries(actions).reduce(
-        (acc, [action, fn]) => ({
-          ...acc,
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          [action]: (...args: any) => {
-            store.setState(fn(...args))
-          },
-        }),
-        {}
-      )
-    : store.setState.bind(store)
 
   return <SelectedState extends State>(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     selector?: (state?: SelectedState) => any
-  ) => {
+  ): [SelectedState, typeof store.setState] => {
     const calculateState = useCallback(
       newValue => (selector ? selector(newValue) : newValue),
       [selector]
@@ -57,6 +39,6 @@ export default function createStore<State>(options: Options<State> = {}) {
       [calculateState, localState]
     )
 
-    return [localState, boundActions]
+    return [localState, store.setState.bind(store)]
   }
 }

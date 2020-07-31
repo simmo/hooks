@@ -59,39 +59,6 @@ describe('createStore', () => {
     })
   })
 
-  describe('custom actions', () => {
-    test('returns defined actions', () => {
-      const useExampleStore = createStore<string[]>({
-        actions: {
-          add: name => prevState => [...prevState, name],
-          reset: () => () => [],
-        },
-        initialState: [],
-      })
-      const { result } = renderHook(() => useExampleStore())
-
-      expect(Object.keys(result.current[1])).toEqual(['add', 'reset'])
-    })
-
-    test('action provides current state', () => {
-      const useExampleStore = createStore<string[]>({
-        actions: {
-          add: name => prevState => [...prevState, name],
-        },
-        initialState: ['A'],
-      })
-      const { result } = renderHook(() => useExampleStore())
-
-      expect(result.current[0]).toEqual(['A'])
-
-      act(() => {
-        result.current[1].add('B')
-      })
-
-      expect(result.current[0]).toEqual(['A', 'B'])
-    })
-  })
-
   describe('subscriptions', () => {
     interface State {
       name: string
