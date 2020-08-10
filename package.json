@@ -99,7 +99,7 @@
     "jest-serializer-path": "^0.1.15",
     "lerna": "^3.20.2",
     "listr": "^0.14.3",
-    "ora": "^4.0.3",
+    "ora": "^5.0.0",
     "prettier": "^2.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
