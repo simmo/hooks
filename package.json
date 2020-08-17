@@ -76,7 +76,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
-    "@storybook/addon-docs": "^5.3.14",
+    "@storybook/addon-docs": "^6.0.11",
     "@storybook/preset-typescript": "^3.0.0",
     "@storybook/react": "^5.3.14",
     "@testing-library/react-hooks": "^3.2.1",
