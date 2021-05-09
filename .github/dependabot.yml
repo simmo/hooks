@@ -1,0 +1,58 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@storybook/addon-docs"
+    versions:
+    - 6.1.17
+    - 6.1.18
+    - 6.1.20
+    - 6.1.21
+    - 6.2.2
+    - 6.2.7
+  - dependency-name: "@storybook/react"
+    versions:
+    - 6.1.17
+    - 6.1.18
+    - 6.1.20
+    - 6.1.21
+    - 6.2.2
+    - 6.2.7
+  - dependency-name: "@babel/core"
+    versions:
+    - 7.12.13
+    - 7.12.16
+    - 7.12.17
+    - 7.13.10
+    - 7.13.13
+    - 7.13.14
+    - 7.13.15
+    - 7.13.8
+  - dependency-name: "@testing-library/react-hooks"
+    versions:
+    - 5.1.0
+    - 5.1.1
+  - dependency-name: y18n
+    versions:
+    - 4.0.1
+  - dependency-name: "@types/node"
+    versions:
+    - 14.14.25
+    - 14.14.28
+    - 14.14.31
+    - 14.14.32
+    - 14.14.34
+    - 14.14.35
+    - 14.14.37
+  - dependency-name: "@types/react-dom"
+    versions:
+    - 17.0.1
+    - 17.0.2
+  - dependency-name: "@types/react"
+    versions:
+    - 17.0.1
+    - 17.0.2
