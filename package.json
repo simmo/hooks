@@ -97,7 +97,7 @@
     "inquirer": "^7.1.0",
     "jest": "^25.2.7",
     "jest-serializer-path": "^0.1.15",
-    "lerna": "^3.20.2",
+    "lerna": "^4.0.0",
     "listr": "^0.14.3",
     "ora": "^5.0.0",
     "prettier": "^2.0.1",
