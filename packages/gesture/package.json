@@ -1,0 +1,48 @@
+{
+  "name": "@hooks/gesture",
+  "description": "React hooks to provide common gesture events",
+  "keywords": [
+    "react",
+    "hooks",
+    "gesture",
+    "gestures",
+    "pointer",
+    "touch",
+    "events",
+    "event",
+    "tap",
+    "hold",
+    "press",
+    "pinch",
+    "zoom",
+    "swipe",
+    "pan",
+    "drag"
+  ],
+  "version": "0.0.0",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "typings/index.d.ts",
+  "typings": "typings/index.d.ts",
+  "files": [
+    "cjs",
+    "esm",
+    "typings"
+  ],
+  "author": "Mike Simmonds (https://mike.id)",
+  "license": "MIT",
+  "scripts": {
+    "prepublishOnly": "yarn build",
+    "build": "node ../../scripts/build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": ">=16.8"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "react": "^16.12.0"
+  }
+}
