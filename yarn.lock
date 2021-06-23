@@ -3578,9 +3578,9 @@
     "@types/react" "*"
 
 "@types/react-dom@>=16.9.0", "@types/react-dom@^17.0.0":
-  version "17.0.5"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.5.tgz#df44eed5b8d9e0b13bb0cd38e0ea6572a1231227"
-  integrity sha512-ikqukEhH4H9gr4iJCmQVNzTB307kROe3XFfHAOTxOXPOw7lAoEXnM5KWTkzeANGL5Ce6ABfiMl/zJBYNi7ObmQ==
+  version "17.0.8"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.8.tgz#3180de6d79bf53762001ad854e3ce49f36dd71fc"
+  integrity sha512-0ohAiJAx1DAUEcY9UopnfwCE9sSMDGnY/oXjWMax6g3RpzmTt2GMyMVAXcbn0mo8XAff0SbQJl2/SBU+hjSZ1A==
   dependencies:
     "@types/react" "*"
 
@@ -8286,9 +8286,9 @@ inquirer@^7.0.0, inquirer@^7.3.3:
     through "^2.3.6"
 
 inquirer@^8.1.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-8.1.0.tgz#68ce5ce5376cf0e89765c993d8b7c1e62e184d69"
-  integrity sha512-1nKYPoalt1vMBfCMtpomsUc32wmOoWXAoq3kM/5iTfxyQ2f/BxjixQpC+mbZ7BI0JUXHED4/XPXekDVtJNpXYw==
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-8.1.1.tgz#7c53d94c6d03011c7bb2a947f0dca3b98246c26a"
+  integrity sha512-hUDjc3vBkh/uk1gPfMAD/7Z188Q8cvTGl0nxwaCdwSbzFh6ZKkZh+s2ozVxbE5G9ZNRyeY0+lgbAIOUFsFf98w==
   dependencies:
     ansi-escapes "^4.2.1"
     chalk "^4.1.1"
