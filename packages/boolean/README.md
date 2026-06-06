@@ -3,7 +3,6 @@
 React hook to store a boolean
 
 ![NPM version](https://img.shields.io/npm/v/@hooks/boolean?style=flat-square)
-![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
 ![License](https://img.shields.io/npm/l/@hooks/boolean?style=flat-square)
 
 ## Install

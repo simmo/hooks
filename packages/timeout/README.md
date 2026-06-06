@@ -3,7 +3,6 @@
 React hook to delay function execution
 
 ![NPM version](https://img.shields.io/npm/v/@hooks/timeout?style=flat-square)
-![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
 ![License](https://img.shields.io/npm/l/@hooks/timeout?style=flat-square)
 
 ## Install

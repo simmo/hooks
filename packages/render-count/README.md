@@ -3,7 +3,6 @@
 React hook to record the render count
 
 ![NPM version](https://img.shields.io/npm/v/@hooks/render-count?style=flat-square)
-![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
 ![License](https://img.shields.io/npm/l/@hooks/render-count?style=flat-square)
 
 ## Install

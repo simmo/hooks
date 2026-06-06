@@ -3,7 +3,6 @@
 React hook to remember a value between renders
 
 ![NPM version](https://img.shields.io/npm/v/@hooks/previous?style=flat-square)
-![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
 ![License](https://img.shields.io/npm/l/@hooks/previous?style=flat-square)
 
 ## Install

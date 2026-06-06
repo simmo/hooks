@@ -4,13 +4,11 @@ A modular collection of React hooks.
 
 🦄 TypeScript support • 🐐 Fully tested • 👾 Server rendering compatible
 
-![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
-![Netlify](https://img.shields.io/netlify/ec8abac0-d0d3-4928-8f30-15163c256eb0?style=flat-square)
 ![License](https://img.shields.io/github/license/simmo/hooks?style=flat-square)
 
 ## Help
 
-Run `yarn go`
+Run `npm run go`
 
 ## Packages
 

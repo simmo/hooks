@@ -19,7 +19,6 @@ const createReadme = ({ name, description }) => [
 ${description}
 
 ![NPM version](https://img.shields.io/npm/v/${name}?style=flat-square)
-![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
 ![License](https://img.shields.io/npm/l/${name}?style=flat-square)
 
 ## Install

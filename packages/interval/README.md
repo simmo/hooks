@@ -3,7 +3,6 @@
 React hook to wrap setInterval
 
 ![NPM version](https://img.shields.io/npm/v/@hooks/interval?style=flat-square)
-![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
 ![License](https://img.shields.io/npm/l/@hooks/interval?style=flat-square)
 
 ## Install

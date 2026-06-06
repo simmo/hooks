@@ -3,7 +3,6 @@
 React hook to execute callback on component mount
 
 ![NPM version](https://img.shields.io/npm/v/@hooks/mount?style=flat-square)
-![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
 ![License](https://img.shields.io/npm/l/@hooks/mount?style=flat-square)
 
 ## Install

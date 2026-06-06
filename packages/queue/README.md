@@ -3,7 +3,6 @@
 React hook to manage a queue
 
 ![NPM version](https://img.shields.io/npm/v/@hooks/queue?style=flat-square)
-![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
 ![License](https://img.shields.io/npm/l/@hooks/queue?style=flat-square)
 
 ## Install

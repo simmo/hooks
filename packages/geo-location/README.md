@@ -3,7 +3,6 @@
 React hook to return geo location details
 
 ![NPM version](https://img.shields.io/npm/v/@hooks/geo-location?style=flat-square)
-![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
 ![License](https://img.shields.io/npm/l/@hooks/geo-location?style=flat-square)
 
 ## Install

@@ -17,7 +17,7 @@ ${keywords.map(keyword => `    "${keyword}"`).join(',\n')}
   "author": "Mike Simmonds (https://mike.id)",
   "license": "MIT",
   "scripts": {
-    "prepublishOnly": "yarn build",
+    "prepublishOnly": "npm run build",
     "build": "node ../../scripts/build",
   },
   "publishConfig": {
