@@ -1,14 +1,11 @@
-/**
- * @jest-environment node
- */
-
-import renderHookServer from '../../utils/renderHookServer'
-import usePrevious from '.'
+import { describe, expect, test } from 'vitest';
+import { renderHookServer } from '../../utils/renderHookServer.js';
+import { usePrevious } from '.';
 
 describe('usePrevious', () => {
   test('returns undefined', () => {
-    const result = renderHookServer(() => usePrevious('test'))
+    const result = renderHookServer(() => usePrevious('test'));
 
-    expect(result).toBeUndefined()
-  })
-})
+    expect(result).toBeUndefined();
+  });
+});

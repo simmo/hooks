@@ -16,7 +16,7 @@ npm i @hooks/before-unload
 ### useBeforeUnload
 
 ```ts
-useBeforeUnload(message?: string)
+useBeforeUnload(message?: string): void
 ```
 
 #### Parameters
@@ -24,3 +24,5 @@ useBeforeUnload(message?: string)
 ##### `message?: string`
 
 If provided, will cause the message to be shown before the page is unloaded.
+
+#### Return `void`

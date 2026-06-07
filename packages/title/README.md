@@ -24,3 +24,5 @@ useTitle(title: string): void
 ##### `title: string`
 
 Will be used to set the document title.
+
+#### Return `void`

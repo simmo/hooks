@@ -25,6 +25,6 @@ useBoolean(initialValue: boolean): [boolean, (nextValue?: boolean) => void]
 
 The initial state for the value.
 
-#### Return
+#### Return `[boolean, (nextValue?: boolean) => void]`
 
 Returns an array containing the value and a function to update it.

@@ -16,7 +16,7 @@ npm i @hooks/media-query
 ### useMediaQuery
 
 ```ts
-useMediaQuery(query: string, fallback = false): boolean
+useMediaQuery(query: string, fallback?: boolean): boolean
 ```
 
 #### Parameters
@@ -25,10 +25,10 @@ useMediaQuery(query: string, fallback = false): boolean
 
 A string representing the media query to parse.
 
-##### `fallback = false`
+##### `fallback?: boolean`
 
 The initial match state, defaults to `false`.
 
-#### Return
+#### Return `boolean`
 
 Returns `true` if the document currently matches the media query list, `false` if not.

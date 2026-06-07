@@ -16,7 +16,7 @@ npm i @hooks/unmount
 ### useUnmount
 
 ```ts
-useUnmount(callback: () => void, hook: (effect: EffectCallback, deps?: DependencyList) => void = useEffect)
+useUnmount(callback: () => void, hook?: (effect: EffectCallback, deps?: DependencyList) => void): void
 ```
 
 #### Parameters
@@ -25,6 +25,8 @@ useUnmount(callback: () => void, hook: (effect: EffectCallback, deps?: Dependenc
 
 Function to execute.
 
-##### `hook: (effect: EffectCallback, deps?: DependencyList) => void = useEffect`
+##### `hook?: (effect: EffectCallback, deps?: DependencyList) => void`
 
 Hook to use, defaults to useEffect.
+
+#### Return `void`

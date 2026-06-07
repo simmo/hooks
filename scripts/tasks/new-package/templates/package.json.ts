@@ -1,6 +1,7 @@
-module.exports = ({ package, keywords, description }) => `{
-  "name": "@hooks/${package}",
+export const template = ({ packageName, keywords, description }: { packageName: string; keywords: string[]; description: string }) => `{
+  "name": "@hooks/${packageName}",
   "description": "${description}",
+  "type": "module",
   "keywords": [
 ${keywords.map(keyword => `    "${keyword}"`).join(',\n')}
   ],
@@ -18,7 +19,7 @@ ${keywords.map(keyword => `    "${keyword}"`).join(',\n')}
   "license": "MIT",
   "scripts": {
     "prepublishOnly": "npm run build",
-    "build": "node ../../scripts/build",
+    "build": "tsx ../../scripts/build.ts",
   },
   "publishConfig": {
     "access": "public"
@@ -30,4 +31,4 @@ ${keywords.map(keyword => `    "${keyword}"`).join(',\n')}
   "devDependencies": {
     "react": "^16.12.0"
   }
-}`
+}`;

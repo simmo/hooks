@@ -16,7 +16,7 @@ npm i @hooks/timeout
 ### useTimeout
 
 ```ts
-useTimeout(callback: Function, delay?: number): void
+useTimeout(callback: Function, delay?: number | null): void
 ```
 
 #### Parameters
@@ -25,6 +25,8 @@ useTimeout(callback: Function, delay?: number): void
 
 Will be executed when the `delay` elapses.
 
-##### `delay?: number`
+##### `delay?: number | null`
 
 Length of time in milliseconds before the `callback` is executed. Providing `null` will clear the timeout.
+
+#### Return `void`

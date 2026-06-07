@@ -16,7 +16,7 @@ npm i @hooks/previous
 ### usePrevious
 
 ```ts
-usePrevious(value: T): T
+usePrevious<T>(value: T): T | undefined
 ```
 
 #### Parameters
@@ -25,6 +25,6 @@ usePrevious(value: T): T
 
 The value to be returned on the next render.
 
-#### Return
+#### Return `T | undefined`
 
 Returns the last value, undefined for initial render.

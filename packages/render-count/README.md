@@ -19,6 +19,6 @@ npm i @hooks/render-count
 useRenderCount(): number
 ```
 
-#### Return
+#### Return `number`
 
 Returns the number of times the hook has been called.

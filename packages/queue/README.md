@@ -16,11 +16,13 @@ npm i @hooks/queue
 ### useQueue
 
 ```ts
-useQueue(initialState: Item[] = [])
+useQueue<Item>(initialState?: Item[]): Queue<Item>
 ```
 
 #### Parameters
 
-##### `initialState: Item[] = []`
+##### `initialState?: Item[]`
 
 Populate the queue with an array of initial values.
+
+#### Return `Queue<Item>`

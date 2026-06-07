@@ -16,9 +16,14 @@ npm i @hooks/store
 ### createStore
 
 ```ts
-createStore(options: Options<State> = {})
+createStore<State>(options?: Options<State>): <SelectedState extends State>(selector?: (state?: SelectedState) => any) => any[]
 ```
 
 #### Parameters
 
-##### `options: Options<State> = {}`
+##### `options?: Options<State>`
+
+- `options.actions`: An object of state update functions.
+- `options.initialState`: The initial state of the store.
+
+#### Return `<SelectedState extends State>(selector?: (state?: SelectedState) => any) => any[]`

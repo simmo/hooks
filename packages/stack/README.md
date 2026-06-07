@@ -16,11 +16,13 @@ npm i @hooks/stack
 ### useStack
 
 ```ts
-useStack(initialState: Item[] = [])
+useStack<Item>(initialState?: Item[]): Stack<Item>
 ```
 
 #### Parameters
 
-##### `initialState: Item[] = []`
+##### `initialState?: Item[]`
 
 Populate the stack with an array of initial values.
+
+#### Return `Stack<Item>`

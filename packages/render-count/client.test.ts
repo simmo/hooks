@@ -1,45 +1,54 @@
-import { useState, useEffect } from 'react'
-import { act, renderHook } from '@testing-library/react-hooks'
-import useRenderCount from '.'
+import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
+import { useState, useEffect } from 'react';
+import { act, renderHook } from '@testing-library/react';
+import { useRenderCount } from '.';
 
 describe('useRenderCount', () => {
-  test('returns initial value', () => {
-    const { result } = renderHook(() => useRenderCount())
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
 
-    expect(result.current).toBe(1)
-  })
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  test('returns initial value', () => {
+    const { result } = renderHook(() => useRenderCount());
+
+    expect(result.current).toBe(1);
+  });
 
   test('increments count', () => {
     const { result } = renderHook(() => {
-      const [, setState] = useState(true)
+      const [, setState] = useState(true);
 
       useEffect(() => {
         setTimeout(() => {
-          setState(true)
-        }, 500)
+          setState(true);
+        }, 500);
         setTimeout(() => {
-          setState(true)
-        }, 700)
+          setState(true);
+        }, 700);
         setTimeout(() => {
-          setState(false)
-        }, 1000)
-      }, [])
+          setState(false);
+        }, 1000);
+      }, []);
 
-      return useRenderCount()
-    })
+      return useRenderCount();
+    });
 
-    expect(result.current).toBe(1)
+    expect(result.current).toBe(1);
 
     act(() => {
-      jest.advanceTimersByTime(500)
-    })
+      vi.advanceTimersByTime(500);
+    });
 
-    expect(result.current).toBe(1)
+    expect(result.current).toBe(1);
 
     act(() => {
-      jest.advanceTimersByTime(500)
-    })
+      vi.advanceTimersByTime(500);
+    });
 
-    expect(result.current).toBe(2)
-  })
-})
+    expect(result.current).toBe(2);
+  });
+});

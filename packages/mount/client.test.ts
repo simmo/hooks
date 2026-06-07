@@ -1,22 +1,23 @@
-import { renderHook } from '@testing-library/react-hooks'
-import useMount from '.'
+import { describe, expect, test, vi } from 'vitest';
+import { renderHook } from '@testing-library/react';
+import { useMount } from '.';
 
 describe('useMount', () => {
   test('executes callback on initial render only', () => {
-    const callback = jest.fn()
+    const callback = vi.fn();
 
     const { rerender } = renderHook(() => {
-      useMount(callback)
-    })
+      useMount(callback);
+    });
 
-    expect(callback).toHaveBeenCalledTimes(1)
+    expect(callback).toHaveBeenCalledTimes(1);
 
-    rerender()
+    rerender();
 
-    expect(callback).toHaveBeenCalledTimes(1)
+    expect(callback).toHaveBeenCalledTimes(1);
 
-    rerender()
+    rerender();
 
-    expect(callback).toHaveBeenCalledTimes(1)
-  })
-})
+    expect(callback).toHaveBeenCalledTimes(1);
+  });
+});

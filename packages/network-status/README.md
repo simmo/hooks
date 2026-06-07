@@ -1,6 +1,6 @@
 # 🎒 @hooks/network-status
 
-React hook return network status details
+React hook to return network status details
 
 ![NPM version](https://img.shields.io/npm/v/@hooks/network-status?style=flat-square)
 ![License](https://img.shields.io/npm/l/@hooks/network-status?style=flat-square)
@@ -19,6 +19,6 @@ npm i @hooks/network-status
 useNetworkStatus(): NetworkStatus
 ```
 
-#### Return
+#### Return `NetworkStatus`
 
 Returns an object containing details about the network status.

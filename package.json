@@ -1,41 +1,24 @@
 {
   "private": true,
+  "type": "module",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "test": "jest",
+    "dev": "tsx --watch ./scripts/index.ts",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
     "lint": "eslint --ext .tsx,.ts ./packages",
-    "report": "node ./scripts/build-report.js",
-    "lerna": "lerna",
-    "go": "node ./scripts"
+    "lint:fix": "eslint --ext .tsx,.ts ./packages --fix",
+    "report": "tsx ./scripts/build-report.ts",
+    "start": "tsx ./scripts/index.ts",
+    "test": "vitest"
   },
   "prettier": {
     "arrowParens": "avoid",
     "tabWidth": 2,
-    "semi": false,
     "singleQuote": true,
-    "trailingComma": "es5",
-    "endOfLine": "auto"
-  },
-  "jest": {
-    "timers": "fake",
-    "verbose": true,
-    "snapshotSerializers": [
-      "jest-serializer-path"
-    ],
-    "roots": [
-      "<rootDir>/packages"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts",
-      "tsx"
-    ],
-    "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    }
+    "trailingComma": "all"
   },
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
@@ -73,34 +56,36 @@
     }
   },
   "devDependencies": {
-    "@babel/core": "^7.8.7",
-    "@testing-library/react-hooks": "^3.2.1",
-    "@types/jest": "^25.1.5",
-    "@types/node": "^13.11.0",
-    "@types/react": "^16.9.32",
-    "@types/react-dom": "^16.9.6",
-    "@types/testing-library__react-hooks": "^3.2.0",
+    "@testing-library/react": "^16.3.2",
+    "@tsconfig/node24": "^24.0.4",
+    "@tsconfig/vite-react": "^8.0.6",
+    "@types/listr": "^0.14.10",
+    "@types/node": "^24.13.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
-    "babel-loader": "^8.0.6",
-    "chalk": "^4.0.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^3.0.0",
-    "inquirer": "^7.1.0",
-    "jest": "^25.2.7",
+    "filesize": "^11.0.17",
+    "gzip-size": "^7.0.0",
+    "happy-dom": "^20.10.2",
+    "inquirer": "^14.0.2",
     "jest-serializer-path": "^0.1.15",
-    "lerna": "^3.20.2",
     "listr": "^0.14.3",
     "ora": "^4.0.3",
-    "prettier": "^2.0.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-test-renderer": "^16.12.0",
-    "ts-jest": "^25.3.0",
-    "ts-loader": "^7.0.1",
-    "typescript": "^3.8.3"
+    "prettier": "^3.8.3",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-test-renderer": "^19.2.7",
+    "terser": "^5.48.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16",
+    "vitest": "^4.1.8",
+    "yoctocolors": "^2.1.2"
   }
 }

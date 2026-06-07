@@ -1,42 +1,48 @@
-import { renderHook } from '@testing-library/react-hooks'
-import useTimeout from '.'
+import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
+import { renderHook } from '@testing-library/react';
+import { useTimeout } from '.';
 
 describe('useTimeout', () => {
-  const callback = jest.fn().mockName('mock callback')
+  const callback = vi.fn().mockName('mock callback');
+
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
 
   afterEach(() => {
-    callback.mockClear()
-  })
+    vi.useRealTimers();
+    callback.mockClear();
+  });
 
   test('executes callback after delay', () => {
     renderHook(delay => useTimeout(callback, delay), {
       initialProps: 500,
-    })
+    });
 
-    expect(callback).not.toBeCalled()
+    expect(callback).not.toHaveBeenCalled();
 
-    jest.advanceTimersByTime(500)
+    vi.advanceTimersByTime(500);
 
-    expect(callback).toBeCalled()
-    expect(callback).toHaveBeenCalledTimes(1)
-  })
+    expect(callback).toHaveBeenCalled();
+    expect(callback).toHaveBeenCalledTimes(1);
+  });
 
   test('cancels timeout if no delay', () => {
     const { rerender } = renderHook(delay => useTimeout(callback, delay), {
       initialProps: 500,
-    })
+    });
 
-    expect(callback).not.toBeCalled()
+    expect(callback).not.toHaveBeenCalled();
 
-    rerender(null)
-    jest.advanceTimersByTime(500)
+    rerender();
+    vi.advanceTimersByTime(500);
 
-    expect(callback).not.toBeCalled()
+    expect(callback).not.toHaveBeenCalled();
 
-    rerender(500)
-    jest.advanceTimersByTime(500)
+    rerender(500);
+    vi.advanceTimersByTime(500);
 
-    expect(callback).toBeCalled()
-    expect(callback).toHaveBeenCalledTimes(1)
-  })
-})
+    expect(callback).toHaveBeenCalled();
+    expect(callback).toHaveBeenCalledTimes(1);
+  });
+});

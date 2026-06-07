@@ -1,18 +1,19 @@
-import { renderHook } from '@testing-library/react-hooks'
-import useUnmount from '.'
+import { describe, expect, test, vi } from 'vitest';
+import { renderHook } from '@testing-library/react';
+import { useUnmount } from '.';
 
 describe('useUnmount', () => {
   test('executes callback on unmount', () => {
-    const callback = jest.fn()
+    const callback = vi.fn();
 
     const { unmount } = renderHook(() => {
-      useUnmount(callback)
-    })
+      useUnmount(callback);
+    });
 
-    expect(callback).not.toHaveBeenCalled()
+    expect(callback).not.toHaveBeenCalled();
 
-    unmount()
+    unmount();
 
-    expect(callback).toHaveBeenCalledTimes(1)
-  })
-})
+    expect(callback).toHaveBeenCalledTimes(1);
+  });
+});

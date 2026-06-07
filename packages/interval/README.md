@@ -28,3 +28,5 @@ Will be executed each time the `interval` elapses.
 ##### `interval?: number | null`
 
 Length of time in milliseconds before the `callback` is executed. Providing `null` will clear the interval.
+
+#### Return `void`

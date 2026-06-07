@@ -1,58 +1,59 @@
-import { act, renderHook } from '@testing-library/react-hooks'
-import useMediaQuery from '.'
+import { afterEach, describe, expect, test, vi } from 'vitest';
+import { act, renderHook } from '@testing-library/react';
+import { useMediaQuery } from '.';
 
 describe('useMediaQuery', () => {
-  const addListener = jest.fn()
-  const removeListener = jest.fn()
+  const addEventListener = vi.fn();
+  const removeEventListener = vi.fn();
 
   if ('window' in global) {
-    window.matchMedia = jest.fn().mockImplementation(query => ({
-      addListener,
+    window.matchMedia = vi.fn().mockImplementation(query => ({
+      addEventListener,
       matches: false,
       media: query,
       onchange: null,
-      removeListener,
-    }))
+      removeEventListener,
+    }));
   }
 
   afterEach(() => {
-    addListener.mockClear()
-    removeListener.mockClear()
-  })
+    addEventListener.mockClear();
+    removeEventListener.mockClear();
+  });
 
   test('returns the current match', () => {
-    const { result } = renderHook(() => useMediaQuery('(min-width: 300px)'))
+    const { result } = renderHook(() => useMediaQuery('(min-width: 300px)'));
 
-    expect(result.current).toBe(false)
-  })
+    expect(result.current).toBe(false);
+  });
 
   test('listens for changes', () => {
-    renderHook(() => useMediaQuery('(min-width: 300px)'))
+    renderHook(() => useMediaQuery('(min-width: 300px)'));
 
-    expect(addListener).toBeCalled()
-  })
+    expect(addEventListener).toHaveBeenCalled();
+  });
 
   test('responds to changes', () => {
-    const { result } = renderHook(() => useMediaQuery('(min-width: 300px)'))
+    const { result } = renderHook(() => useMediaQuery('(min-width: 300px)'));
 
     act(() => {
-      addListener.mock.calls[0][0]({ matches: true })
-    })
+      addEventListener.mock.calls[0][1]({ matches: true });
+    });
 
-    expect(result.current).toBe(true)
+    expect(result.current).toBe(true);
 
     act(() => {
-      addListener.mock.calls[0][0]({ matches: true })
-    })
+      addEventListener.mock.calls[0][1]({ matches: true });
+    });
 
-    expect(result.current).toBe(true)
-  })
+    expect(result.current).toBe(true);
+  });
 
   test('removes the listener', () => {
-    const { unmount } = renderHook(() => useMediaQuery('(min-width: 300px)'))
+    const { unmount } = renderHook(() => useMediaQuery('(min-width: 300px)'));
 
-    unmount()
+    unmount();
 
-    expect(removeListener).toBeCalled()
-  })
-})
+    expect(removeEventListener).toHaveBeenCalled();
+  });
+});
