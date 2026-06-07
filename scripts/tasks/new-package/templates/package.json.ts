@@ -1,4 +1,12 @@
-export const template = ({ packageName, keywords, description }: { packageName: string; keywords: string[]; description: string }) => `{
+export const template = ({
+  packageName,
+  keywords,
+  description,
+}: {
+  packageName: string;
+  keywords: string[];
+  description: string;
+}) => `{
   "name": "@hooks/${packageName}",
   "description": "${description}",
   "type": "module",
@@ -6,20 +14,26 @@ export const template = ({ packageName, keywords, description }: { packageName: 
 ${keywords.map(keyword => `    "${keyword}"`).join(',\n')}
   ],
   "version": "0.0.0",
-  "main": "cjs/index.js",
-  "module": "esm/index.js",
-  "types": "typings/index.d.ts",
-  "typings": "typings/index.d.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
-    "cjs",
-    "esm",
-    "typings"
+    "dist"
   ],
   "author": "Mike Simmonds (https://mike.id)",
   "license": "MIT",
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "tsx ../../scripts/build.ts",
+    "typecheck": "tsx ../../scripts/typecheck.ts"
   },
   "publishConfig": {
     "access": "public"

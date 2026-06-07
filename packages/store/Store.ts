@@ -1,9 +1,9 @@
-type Subscription = <S>(state: S) => void;
+type Subscription<State> = (state?: State) => void;
 type SetState<State> = ((prevState: State) => State) | State;
 
 export class Store<State> {
   state?: State;
-  subscriptions: Subscription[] = [];
+  subscriptions: Subscription<State>[] = [];
 
   constructor(initialState?: State) {
     this.state = initialState;
@@ -18,7 +18,7 @@ export class Store<State> {
     return this.state;
   }
 
-  subscribe(subscription: Subscription) {
+  subscribe(subscription: Subscription<State>) {
     this.subscriptions.push(subscription);
 
     return () => {

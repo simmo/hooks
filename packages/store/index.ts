@@ -33,15 +33,15 @@ export function createStore<State>(options: Options<State> = {}) {
       )
     : store.setState.bind(store);
 
-  return <SelectedState extends State>(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    selector?: (state?: SelectedState) => any,
+  return <SelectedState = State>(
+    selector?: (state?: State) => SelectedState,
   ) => {
     const calculateState = useCallback(
-      (newValue?: SelectedState) => (selector ? selector(newValue) : newValue),
+      (newValue?: State) =>
+        selector ? selector(newValue) : (newValue as unknown as SelectedState),
       [selector],
     );
-    const [localState, setLocalState] = useState(
+    const [localState, setLocalState] = useState<SelectedState>(
       calculateState(store.getState()),
     );
 

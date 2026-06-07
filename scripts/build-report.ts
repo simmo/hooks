@@ -4,14 +4,22 @@ import { minify } from 'terser';
 import { gzipSize } from 'gzip-size';
 import { filesize } from 'filesize';
 import { bold } from 'yoctocolors';
+import { getAllPackages } from './utils/index.js';
+import { join } from 'path';
 
-const roots = ['cjs', 'esm', 'typings'];
+const packages = await getAllPackages();
 
-roots.map(async root => {
+packages.forEach(async packageName => {
+  const root = join('.', 'packages', packageName, 'dist');
   const files: string[] = [];
 
-  for await (const entry of glob(root + '/**/*', { withFileTypes: true })) {
-    if (entry.isFile()) files.push(entry.name);
+  for await (const file of glob(join(root, '**', '*'), {
+    withFileTypes: true,
+    exclude: ['**/_virtual/**'],
+  })) {
+    if (file.isFile()) {
+      files.push(join(file.parentPath, file.name));
+    }
   }
 
   const contents = await Promise.all(files.map(file => readFile(file, 'utf8')));
@@ -21,9 +29,10 @@ roots.map(async root => {
       const content = contents[index];
       const size = Buffer.byteLength(content);
 
-      const minifiedContent = file.endsWith('.js')
-        ? (await minify(contents[index])).code
-        : contents[index];
+      const minifiedContent =
+        file.endsWith('.js') || file.endsWith('.cjs')
+          ? (await minify(contents[index])).code
+          : contents[index];
 
       if (!minifiedContent) throw new Error(`Failed to minify ${file}`);
 
@@ -31,7 +40,7 @@ roots.map(async root => {
       const gzipped = await gzipSize(minifiedContent);
 
       console.log(
-        `\n${bold(file)}\n${filesize(size)} (Minified: ${filesize(
+        `\n${bold(file.replace(process.cwd() + '/packages/', ''))}\n${filesize(size)} (Minified: ${filesize(
           minified,
         )}, Gzipped: ${filesize(gzipped)})`,
       );
@@ -55,7 +64,7 @@ roots.map(async root => {
   );
 
   console.log(
-    `${bold(root)} ${filesize(sum.size)} (Minified: ${filesize(
+    `${bold(packageName.replace(process.cwd() + '/packages/', ''))} ${filesize(sum.size)} (Minified: ${filesize(
       sum.minified,
     )}, Gzipped: ${filesize(sum.gzipped)})`,
   );
