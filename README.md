@@ -1,10 +1,17 @@
-# 🎒 React Hooks
+<br/>
 
-A modular collection of React hooks.
+<picture>
+	<source media="(prefers-color-scheme: dark)" srcset="./.github/assets/logo-dark.svg">
+	<img alt="Hooks logo" src="./.github/assets/logo-light.svg" width="150">
+</picture>
 
-🦄 TypeScript support • 🐐 Fully tested • 👾 Server rendering compatible
+<p><small>A modular collection of React hooks.</small></p>
 
-![License](https://img.shields.io/github/license/simmo/hooks?style=flat-square)
+<p>🦄 TypeScript support • 🐐 Fully tested • 👾 Server rendering compatible</p>
+
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/simmo/hooks/ci.yml?style=flat)](https://github.com/simmo/hooks/actions/workflows/ci.yml) ![License](https://img.shields.io/github/license/simmo/hooks?style=flat)
+
+---
 
 ## Help
 

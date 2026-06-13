@@ -29,12 +29,20 @@ export const script = createScript({
           );
 
           ctx.newContent = await prettier.format(
-            `# 🎒 React Hooks
-A modular collection of React hooks.
+            `<br/>
 
-🦄 TypeScript support • 🐐 Fully tested • 👾 Server rendering compatible
+<picture>
+	<source media="(prefers-color-scheme: dark)" srcset="./.github/assets/logo-dark.svg">
+	<img alt="Hooks logo" src="./.github/assets/logo-light.svg" width="150">
+</picture>
 
-![License](https://img.shields.io/github/license/simmo/hooks?style=flat-square)
+<p><small>A modular collection of React hooks.</small></p>
+
+<p>🦄 TypeScript support • 🐐 Fully tested • 👾 Server rendering compatible</p>
+
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/simmo/hooks/ci.yml?style=flat)](https://github.com/simmo/hooks/actions/workflows/ci.yml) ![License](https://img.shields.io/github/license/simmo/hooks?style=flat)
+
+---
 
 ## Help
 
