@@ -39,7 +39,7 @@
     "shallowequal": "^1.1.0"
   },
   "devDependencies": {
-    "@types/shallowequal": "^1.1.1",
+    "@types/shallowequal": "^1.1.5",
     "react": "^19.2.7"
   }
 }
