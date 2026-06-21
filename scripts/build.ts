@@ -78,8 +78,9 @@ const files: { path: string; name: string }[] = [];
 for await (const file of glob(join('.', 'dist', '**', '*'), {
   withFileTypes: true,
 })) {
-  if (file.isFile())
+  if (file.isFile()) {
     files.push({ path: join(file.parentPath, file.name), name: file.name });
+  }
 }
 
 const results = await Promise.all(
