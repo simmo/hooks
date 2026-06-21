@@ -107,21 +107,23 @@ const results = await Promise.all(
 
 results.sort(({ file: a }, { file: b }) => a.path.localeCompare(b.path));
 
-if (env['GITHUB_ACTIONS'] !== 'true') console.log(results);
+if (env['GITHUB_ACTIONS'] !== 'true') {
+  console.log(results);
+} else {
+  core.summary.addHeading('Build Report', 1);
 
-core.summary.addHeading('Build Report', 1);
+  results.forEach(({ file, size, minified, gzipped }) => {
+    core.summary.addHeading(file.name, 2).addTable([
+      [
+        { data: 'Size', header: true },
+        { data: 'Minified', header: true },
+        { data: 'Gzipped', header: true },
+      ],
+      [{ data: size }, { data: minified ?? '-' }, { data: gzipped }],
+    ]);
+  });
 
-results.forEach(({ file, size, minified, gzipped }) => {
-  core.summary.addHeading(file.name, 2).addTable([
-    [
-      { data: 'Size', header: true },
-      { data: 'Minified', header: true },
-      { data: 'Gzipped', header: true },
-    ],
-    [{ data: size }, { data: minified ?? '-' }, { data: gzipped }],
-  ]);
-});
-
-await core.summary.write();
+  await core.summary.write();
+}
 
 spinner.succeed();
