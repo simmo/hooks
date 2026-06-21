@@ -48,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: workspace-dist
-          path: packages/*/dist/**
+          path: packages/*/dist/
           if-no-files-found: error
 
   test:
