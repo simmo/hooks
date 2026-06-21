@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from 'vitest';
 import { renderHookServer } from '../../utils/renderHookServer.js';
-import { useTimeout } from '.';
+import { useTimeout } from './index';
 
 describe('useTimeout', () => {
   test('should render', () => {

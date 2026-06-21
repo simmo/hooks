@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, test, vi } from 'vitest';
 import { act, renderHook } from '@testing-library/react';
-import { useMediaQuery } from '.';
+import { useMediaQuery } from './index';
 
 describe('useMediaQuery', () => {
   const addEventListener = vi.fn();

@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from 'vitest';
 import { renderHookServer } from '../../utils/renderHookServer.js';
-import { useUnmount } from '.';
+import { useUnmount } from './index';
 
 describe('useUnmount', () => {
   test('callback is not executed', () => {

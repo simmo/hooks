@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { renderHookServer } from '../../utils/renderHookServer.js';
-import { createStore } from '.';
+import { createStore } from './index';
 
 describe('createStore', () => {
   describe('initial state', () => {

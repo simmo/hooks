@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { renderHook } from '@testing-library/react';
-import { useQueue } from '.';
+import { useQueue } from './index';
 import { Queue } from './Queue';
 
 describe('useQueue', () => {

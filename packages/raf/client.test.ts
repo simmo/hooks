@@ -1,6 +1,6 @@
 import { describe, test, expect, beforeEach, vi } from 'vitest';
 import { renderHook } from '@testing-library/react';
-import { useRaf } from '.';
+import { useRaf } from './index';
 
 describe('useRaf', () => {
   const mockedTimestamp = 123456;

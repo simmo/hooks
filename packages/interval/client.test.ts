@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 import { renderHook } from '@testing-library/react';
-import { useInterval } from '.';
+import { useInterval } from './index';
 
 describe('useInterval', () => {
   const callback = vi.fn().mockName('mock callback');

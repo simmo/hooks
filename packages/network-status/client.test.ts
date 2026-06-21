@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 import { renderHook } from '@testing-library/react';
-import { useNetworkStatus } from '.';
+import { useNetworkStatus } from './index';
 
 const addEventListener = vi.spyOn(window, 'addEventListener');
 const removeEventListener = vi.spyOn(window, 'removeEventListener');

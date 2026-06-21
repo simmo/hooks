@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { renderHook } from '@testing-library/react';
-import { useStack } from '.';
+import { useStack } from './index';
 import { Stack } from './Stack';
 
 describe('useStack', () => {

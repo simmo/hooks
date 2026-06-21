@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from 'vitest';
 import { renderHookServer } from '../../utils/renderHookServer';
-import { useInterval } from '.';
+import { useInterval } from './index';
 
 describe('useInterval', () => {
   test('should render', () => {

@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { renderHookServer } from '../../utils/renderHookServer.js';
-import { useTitle } from '.';
+import { useTitle } from './index';
 
 describe('useTitle', () => {
   test('renders', () => {

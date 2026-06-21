@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { renderHookServer } from '../../utils/renderHookServer';
-import { useMediaQuery } from '.';
+import { useMediaQuery } from './index';
 
 describe('useMediaQuery', () => {
   const testQuery = '(min-width: 300px)';

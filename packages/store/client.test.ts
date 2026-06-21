@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { act, renderHook } from '@testing-library/react';
-import { createStore } from '.';
+import { createStore } from './index';
 
 describe('createStore', () => {
   describe('initial state', () => {

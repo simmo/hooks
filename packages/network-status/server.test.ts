@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { renderHookServer } from '../../utils/renderHookServer.js';
-import { useNetworkStatus } from '.';
+import { useNetworkStatus } from './index';
 
 describe('useNetworkStatus', () => {
   test('returns undefined', () => {

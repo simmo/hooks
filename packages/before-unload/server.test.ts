@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { renderHookServer } from '../../utils/renderHookServer';
-import { useBeforeUnload } from '.';
+import { useBeforeUnload } from './index';
 
 describe('useBeforeUnload', () => {
   test('renders without error', () => {

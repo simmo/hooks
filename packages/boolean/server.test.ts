@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { renderHookServer } from '../../utils/renderHookServer';
-import { useBoolean } from '.';
+import { useBoolean } from './index';
 
 describe('useBoolean', () => {
   test('returns initial value', () => {

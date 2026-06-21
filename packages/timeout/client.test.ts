@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 import { renderHook } from '@testing-library/react';
-import { useTimeout } from '.';
+import { useTimeout } from './index';
 
 describe('useTimeout', () => {
   const callback = vi.fn().mockName('mock callback');

@@ -1,11 +1,10 @@
 import { describe, test, expect, beforeEach, vi, type Mock } from 'vitest';
 import { renderHook } from '@testing-library/react';
-import { useBeforeUnload } from '.';
+import { useBeforeUnload } from './index';
 
 const addEventListener = vi.spyOn(window, 'addEventListener');
 const removeEventListener = vi.spyOn(window, 'removeEventListener');
 const unloadMessage = 'Do you want to save?';
-
 const beforeUnloadEvent = 'beforeunload';
 
 interface ExampleEvent {

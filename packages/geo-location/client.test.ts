@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, test, vi, type Mock } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
-import { useGeoLocation } from '.';
+import { useGeoLocation } from './index';
 
 const positions: GeolocationPosition[] = [
   [52.520007, 13.404954, 1559129501234],

@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { renderHookServer } from '../../utils/renderHookServer.js';
-import { useQueue } from '.';
+import { useQueue } from './index';
 import { Queue } from './Queue';
 
 describe('useQueue', () => {

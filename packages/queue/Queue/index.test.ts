@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { Queue } from '.';
+import { Queue } from './index';
 
 describe('Queue', () => {
   test('initalises with an empty queue', () => {

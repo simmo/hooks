@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 
-import { Stack } from '.';
+import { Stack } from './index';
 
 describe('Stack', () => {
   test('initialises with an empty stack', () => {

@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { renderHookServer } from '../../utils/renderHookServer';
-import { useGeoLocation } from '.';
+import { useGeoLocation } from './index';
 
 describe('useGeoLocation', () => {
   test('should render', () => {

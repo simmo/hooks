@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 import { useState, useEffect } from 'react';
 import { act, renderHook } from '@testing-library/react';
-import { useRenderCount } from '.';
+import { useRenderCount } from './index';
 
 describe('useRenderCount', () => {
   beforeEach(() => {

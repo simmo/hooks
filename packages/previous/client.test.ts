@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { renderHook } from '@testing-library/react';
-import { usePrevious } from '.';
+import { usePrevious } from './index';
 
 describe('usePrevious', () => {
   test('returns value from last render', () => {

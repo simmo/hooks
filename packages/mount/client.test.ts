@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from 'vitest';
 import { renderHook } from '@testing-library/react';
-import { useMount } from '.';
+import { useMount } from './index';
 
 describe('useMount', () => {
   test('executes callback on initial render only', () => {

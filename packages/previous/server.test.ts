@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { renderHookServer } from '../../utils/renderHookServer.js';
-import { usePrevious } from '.';
+import { usePrevious } from './index';
 
 describe('usePrevious', () => {
   test('returns undefined', () => {

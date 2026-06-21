@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from 'vitest';
 import { renderHook } from '@testing-library/react';
-import { useUnmount } from '.';
+import { useUnmount } from './index';
 
 describe('useUnmount', () => {
   test('executes callback on unmount', () => {
