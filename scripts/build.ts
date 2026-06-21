@@ -13,12 +13,14 @@ import * as core from '@actions/core';
 import { env } from 'node:process';
 
 const cwd = process.cwd();
-const pkg = await import(`${cwd}/package.json`, { with: { type: 'json' } });
+const pkg = await import(`${cwd}/package.json`, {
+  with: { type: 'json' },
+}).then(module => module.default);
 const execAsync = promisify(exec);
 
 const external: string[] = [
-  ...Object.keys(pkg.default.peerDependencies ?? {}),
-  ...Object.keys(pkg.default.dependencies ?? {}),
+  ...Object.keys(pkg.peerDependencies ?? {}),
+  ...Object.keys(pkg.dependencies ?? {}),
 ];
 
 const spinner = ora('Building...').start();
@@ -111,18 +113,22 @@ results.sort(({ file: a }, { file: b }) => a.path.localeCompare(b.path));
 if (env['GITHUB_ACTIONS'] !== 'true') {
   console.log(results);
 } else {
-  core.summary.addHeading('Build Report', 1);
+  core.summary.addHeading(`${pkg.name} Build Report`, 1);
 
-  results.forEach(({ file, size, minified, gzipped }) => {
-    core.summary.addHeading(file.name, 2).addTable([
-      [
-        { data: 'Size', header: true },
-        { data: 'Minified', header: true },
-        { data: 'Gzipped', header: true },
-      ],
-      [{ data: size }, { data: minified ?? '-' }, { data: gzipped }],
-    ]);
-  });
+  core.summary.addTable([
+    [
+      { data: 'File', header: true },
+      { data: 'Size', header: true },
+      { data: 'Minified', header: true },
+      { data: 'Gzipped', header: true },
+    ],
+    ...results.map<string[]>(({ file, size, minified, gzipped }) => [
+      file.path,
+      size,
+      minified ?? '-',
+      gzipped,
+    ]),
+  ]);
 
   await core.summary.write();
 }
