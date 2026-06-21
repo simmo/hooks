@@ -39,16 +39,22 @@ jobs:
         run: npm ci
 
       - name: Build workspace packages
-        run: npm --workspaces --if-present run build
+        run: npm --workspaces --if-present run build 2>&1 | tee build.log
 
       - name: Debug - List package structure
-        run: find packages -maxdepth 2 -type d -name dist | head -20
+        run: |
+          echo "=== Checking for dist directories ==="
+          find packages -maxdepth 2 -type d -name dist
+          echo "=== Current working directory ==="
+          pwd
+          echo "=== Listing packages directory ==="
+          ls -la packages/ | head -20
 
       - name: Upload workspace dist artifacts
         uses: actions/upload-artifact@v7
         with:
           name: workspace-dist
-          path: packages/*/dist/
+          path: packages/*/dist/**
           if-no-files-found: error
 
   test:
