@@ -5,6 +5,7 @@ on:
 
 jobs:
   discover-packages:
+    name: Discover packages
     runs-on: ubuntu-latest
     outputs:
       packages: ${{ steps.packages.outputs.packages }}
@@ -19,8 +20,38 @@ jobs:
           packages_json=$(find ./packages -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort | jq -R -s -c 'split("\n") | map(select(length > 0))')
           echo "packages=${packages_json}" >> "$GITHUB_OUTPUT"
 
-  test-and-typecheck:
+  build-workspaces:
+    name: Build workspaces
     needs: discover-packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build workspace packages
+        run: npm --workspaces --if-present run build
+
+      - name: Upload workspace dist artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: workspace-dist
+          path: packages/*/dist
+          if-no-files-found: error
+
+  test:
+    name: Test
+    needs:
+      - discover-packages
+      - build-workspaces
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -39,11 +70,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Download workspace dist artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: workspace-dist
+          path: .
+
       - name: Run tests
         run: npm test -- packages/${{ matrix.package }}
 
       - name: Run typecheck
         run: npm --workspace ./packages/${{ matrix.package }} run typecheck
-
-      - name: Run build
-        run: npm --workspace ./packages/${{ matrix.package }} run build
