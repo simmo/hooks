@@ -88,30 +88,39 @@ for await (const file of glob(join('.', 'dist', '**', '*'), {
 const results = await Promise.all(
   files.map(async file => {
     const content = await readFile(file.path, 'utf8');
-    const size = filesize(Buffer.byteLength(content));
+    const size = Buffer.byteLength(content);
 
-    const minified =
-      file.name.endsWith('.js') || file.name.endsWith('.cjs')
+    const minifiedContent =
+      (file.name.endsWith('.js') || file.name.endsWith('.cjs')
         ? await minify(content).then(({ code }) =>
-            isString(code) ? filesize(Buffer.byteLength(code)) : undefined,
+            isString(code) ? code : undefined,
           )
-        : undefined;
+        : undefined) ?? content;
 
-    const gzipped = await gzipSize(minified ?? content).then(filesize);
+    const minified = Buffer.byteLength(minifiedContent);
+    const gzipped = await gzipSize(minifiedContent);
 
-    return {
-      file,
-      size,
-      minified,
-      gzipped,
-    };
+    return { file, size, minified, gzipped };
   }),
 );
 
 results.sort(({ file: a }, { file: b }) => a.path.localeCompare(b.path));
 
+const [totalSize, totalMinified, totalGzipped] = results.reduce<
+  [totalSize: number, totalMinified: number, totalGzipped: number]
+>(
+  (acc, { size, minified, gzipped }) => {
+    acc[0] += size;
+    acc[1] += minified ?? 0;
+    acc[2] += gzipped ?? 0;
+
+    return acc;
+  },
+  [0, 0, 0],
+);
+
 if (env['GITHUB_ACTIONS'] !== 'true') {
-  console.log(results);
+  console.log({ files: results, totalSize, totalMinified, totalGzipped });
 } else {
   core.summary.addHeading(`${pkg.name} Build Report`, 1);
 
@@ -123,11 +132,12 @@ if (env['GITHUB_ACTIONS'] !== 'true') {
       { data: 'Gzipped', header: true },
     ],
     ...results.map<string[]>(({ file, size, minified, gzipped }) => [
-      file.path,
-      size,
-      minified ?? '-',
-      gzipped,
+      file.name,
+      filesize(size),
+      minified ? filesize(minified) : '-',
+      gzipped ? filesize(gzipped) : '-',
     ]),
+    ['', filesize(totalSize), filesize(totalMinified), filesize(totalGzipped)],
   ]);
 
   await core.summary.write();
