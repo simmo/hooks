@@ -1,29 +1,26 @@
-/**
- * @jest-environment node
- */
-
-import renderHookServer from '../../utils/renderHookServer'
-import useUnmount from '.'
+import { describe, expect, test, vi } from 'vitest';
+import { renderHookServer } from '../../utils/renderHookServer.js';
+import { useUnmount } from './index';
 
 describe('useUnmount', () => {
   test('callback is not executed', () => {
-    const callback = jest.fn()
+    const callback = vi.fn();
 
     renderHookServer(() => {
-      useUnmount(callback)
-    })
+      useUnmount(callback);
+    });
 
-    expect(callback).not.toHaveBeenCalled()
-  })
+    expect(callback).not.toHaveBeenCalled();
+  });
 
   test('renders without error', () => {
-    const callback = jest.fn()
+    const callback = vi.fn();
 
     const render = () =>
       renderHookServer(() => {
-        useUnmount(callback)
-      })
+        useUnmount(callback);
+      });
 
-    expect(render).not.toThrow()
-  })
-})
+    expect(render).not.toThrow();
+  });
+});

@@ -1,8 +1,4 @@
 node_modules
 coverage
-cjs
-esm
-typings
+dist
 *.log
-.yarn
-storybook-static

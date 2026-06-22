@@ -1,14 +1,11 @@
-/**
- * @jest-environment node
- */
-
-import renderHookServer from '../../utils/renderHookServer'
-import useTitle from '.'
+import { describe, expect, test } from 'vitest';
+import { renderHookServer } from '../../utils/renderHookServer.js';
+import { useTitle } from './index';
 
 describe('useTitle', () => {
   test('renders', () => {
-    const render = () => renderHookServer(() => useTitle('Test'))
+    const render = () => renderHookServer(() => useTitle('Test'));
 
-    expect(render).not.toThrow()
-  })
-})
+    expect(render).not.toThrow();
+  });
+});

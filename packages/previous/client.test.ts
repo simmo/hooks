@@ -1,21 +1,22 @@
-import { renderHook } from '@testing-library/react-hooks'
-import usePrevious from '.'
+import { describe, expect, test } from 'vitest';
+import { renderHook } from '@testing-library/react';
+import { usePrevious } from './index';
 
 describe('usePrevious', () => {
   test('returns value from last render', () => {
-    const initialValue = 'a'
+    const initialValue = 'a';
     const { rerender, result } = renderHook(({ value }) => usePrevious(value), {
       initialProps: { value: initialValue },
-    })
+    });
 
-    expect(result.current).toBeUndefined()
+    expect(result.current).toBeUndefined();
 
-    rerender({ value: 'b' })
+    rerender({ value: 'b' });
 
-    expect(result.current).toBe('a')
+    expect(result.current).toBe('a');
 
-    rerender({ value: 'c' })
+    rerender({ value: 'c' });
 
-    expect(result.current).toBe('b')
-  })
-})
+    expect(result.current).toBe('b');
+  });
+});

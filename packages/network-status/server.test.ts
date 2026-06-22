@@ -1,14 +1,11 @@
-/**
- * @jest-environment node
- */
-
-import renderHookServer from '../../utils/renderHookServer'
-import useNetworkStatus from '.'
+import { describe, expect, test } from 'vitest';
+import { renderHookServer } from '../../utils/renderHookServer.js';
+import { useNetworkStatus } from './index';
 
 describe('useNetworkStatus', () => {
   test('returns undefined', () => {
-    const result = renderHookServer(() => useNetworkStatus())
+    const result = renderHookServer(() => useNetworkStatus());
 
-    expect(result).toEqual({ online: undefined })
-  })
-})
+    expect(result).toEqual({ online: undefined });
+  });
+});

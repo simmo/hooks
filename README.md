@@ -1,16 +1,21 @@
-# 🎒 React Hooks
+<br/>
 
-A modular collection of React hooks.
+<picture>
+	<source media="(prefers-color-scheme: dark)" srcset="./.github/assets/logo-dark.svg">
+	<img alt="Hooks logo" src="./.github/assets/logo-light.svg" width="150">
+</picture>
 
-🦄 TypeScript support • 🐐 Fully tested • 👾 Server rendering compatible
+<p><small>A modular collection of React hooks.</small></p>
 
-![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
-![Netlify](https://img.shields.io/netlify/ec8abac0-d0d3-4928-8f30-15163c256eb0?style=flat-square)
-![License](https://img.shields.io/github/license/simmo/hooks?style=flat-square)
+<p>🦄 TypeScript support • 🐐 Fully tested • 👾 Server rendering compatible</p>
+
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/simmo/hooks/ci.yml?style=flat)](https://github.com/simmo/hooks/actions/workflows/ci.yml) ![License](https://img.shields.io/github/license/simmo/hooks?style=flat)
+
+---
 
 ## Help
 
-Run `yarn go`
+Run `npm start`
 
 ## Packages
 
@@ -24,7 +29,7 @@ See `./packages/*` for individual package installation details.
 | [@hooks/interval](packages/interval)             | ![npm](https://img.shields.io/npm/v/@hooks/interval?style=flat-square)       | React hook to wrap setInterval                                     |
 | [@hooks/media-query](packages/media-query)       | ![npm](https://img.shields.io/npm/v/@hooks/media-query?style=flat-square)    | React hook to respond to media queries                             |
 | [@hooks/mount](packages/mount)                   | ![npm](https://img.shields.io/npm/v/@hooks/mount?style=flat-square)          | React hook to execute callback on component mount                  |
-| [@hooks/network-status](packages/network-status) | ![npm](https://img.shields.io/npm/v/@hooks/network-status?style=flat-square) | React hook return network status details                           |
+| [@hooks/network-status](packages/network-status) | ![npm](https://img.shields.io/npm/v/@hooks/network-status?style=flat-square) | React hook to return network status details                        |
 | [@hooks/previous](packages/previous)             | ![npm](https://img.shields.io/npm/v/@hooks/previous?style=flat-square)       | React hook to remember a value between renders                     |
 | [@hooks/queue](packages/queue)                   | ![npm](https://img.shields.io/npm/v/@hooks/queue?style=flat-square)          | React hook to manage a queue                                       |
 | [@hooks/raf](packages/raf)                       | ![npm](https://img.shields.io/npm/v/@hooks/raf?style=flat-square)            | React hook to wrap requestAnimationFrame                           |

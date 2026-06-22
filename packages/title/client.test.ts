@@ -1,12 +1,13 @@
-import { renderHook } from '@testing-library/react-hooks'
-import useTitle from '.'
+import { describe, expect, test } from 'vitest';
+import { renderHook } from '@testing-library/react';
+import { useTitle } from './index';
 
 describe('useTitle', () => {
   test('updates the title', () => {
-    const newTitle = 'Test'
+    const newTitle = 'Test';
 
-    renderHook(() => useTitle(newTitle))
+    renderHook(() => useTitle(newTitle));
 
-    expect(document.title).toBe(newTitle)
-  })
-})
+    expect(document.title).toBe(newTitle);
+  });
+});

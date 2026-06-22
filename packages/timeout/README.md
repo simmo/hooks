@@ -3,7 +3,6 @@
 React hook to delay function execution
 
 ![NPM version](https://img.shields.io/npm/v/@hooks/timeout?style=flat-square)
-![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
 ![License](https://img.shields.io/npm/l/@hooks/timeout?style=flat-square)
 
 ## Install
@@ -17,7 +16,7 @@ npm i @hooks/timeout
 ### useTimeout
 
 ```ts
-useTimeout(callback: Function, delay?: number): void
+useTimeout(callback: Function, delay?: number | null): void
 ```
 
 #### Parameters
@@ -26,6 +25,8 @@ useTimeout(callback: Function, delay?: number): void
 
 Will be executed when the `delay` elapses.
 
-##### `delay?: number`
+##### `delay?: number | null`
 
 Length of time in milliseconds before the `callback` is executed. Providing `null` will clear the timeout.
+
+#### Return `void`

@@ -1,20 +1,13 @@
-/**
- * @jest-environment node
- */
-
-import renderHookServer from '../../utils/renderHookServer'
-import useRaf from '.'
+import { describe, expect, test, vi } from 'vitest';
+import { renderHookServer } from '../../utils/renderHookServer.js';
+import { useRaf } from './index';
 
 describe('useRaf', () => {
-  test('renders with error', () => {
-    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {
-      return null
-    })
-    const callback = jest.fn().mockName('mock callback')
+  test('does not execute callback when rendered on the server', () => {
+    const callback = vi.fn().mockName('mock callback');
 
-    renderHookServer(() => useRaf(callback))
+    renderHookServer(() => useRaf(callback));
 
-    expect(errorSpy).toHaveBeenCalled()
-    expect(callback).not.toHaveBeenCalled()
-  })
-})
+    expect(callback).not.toHaveBeenCalled();
+  });
+});

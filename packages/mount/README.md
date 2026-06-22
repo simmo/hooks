@@ -3,7 +3,6 @@
 React hook to execute callback on component mount
 
 ![NPM version](https://img.shields.io/npm/v/@hooks/mount?style=flat-square)
-![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
 ![License](https://img.shields.io/npm/l/@hooks/mount?style=flat-square)
 
 ## Install
@@ -17,7 +16,7 @@ npm i @hooks/mount
 ### useMount
 
 ```ts
-useMount(callback: () => void, hook: (effect: EffectCallback, deps?: DependencyList) => void = useEffect)
+useMount(callback: () => void, hook?: (effect: EffectCallback, deps?: DependencyList) => void): void
 ```
 
 #### Parameters
@@ -26,6 +25,8 @@ useMount(callback: () => void, hook: (effect: EffectCallback, deps?: DependencyL
 
 Function to execute.
 
-##### `hook: (effect: EffectCallback, deps?: DependencyList) => void = useEffect`
+##### `hook?: (effect: EffectCallback, deps?: DependencyList) => void`
 
 Hook to use, defaults to useEffect.
+
+#### Return `void`

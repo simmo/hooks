@@ -1,15 +1,12 @@
-/**
- * @jest-environment node
- */
-
-import renderHookServer from '../../utils/renderHookServer'
-import useBeforeUnload from '.'
+import { describe, expect, test } from 'vitest';
+import { renderHookServer } from '../../utils/renderHookServer';
+import { useBeforeUnload } from './index';
 
 describe('useBeforeUnload', () => {
   test('renders without error', () => {
     const result = () =>
-      renderHookServer(() => useBeforeUnload('Do you want to save?'))
+      renderHookServer(() => useBeforeUnload('Do you want to save?'));
 
-    expect(result).not.toThrow()
-  })
-})
+    expect(result).not.toThrow();
+  });
+});

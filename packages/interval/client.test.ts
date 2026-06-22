@@ -1,45 +1,54 @@
-import { renderHook } from '@testing-library/react-hooks'
-import useInterval from '.'
+import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
+import { renderHook } from '@testing-library/react';
+import { useInterval } from './index';
 
 describe('useInterval', () => {
-  const callback = jest.fn().mockName('mock callback')
+  const callback = vi.fn().mockName('mock callback');
+
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
 
   afterEach(() => {
-    callback.mockClear()
-  })
+    vi.useRealTimers();
+    callback.mockClear();
+  });
 
   test('executes callback after delay', () => {
-    renderHook(({ interval }) => useInterval(callback, interval), {
-      initialProps: { interval: 500 },
-    })
-
-    expect(callback).not.toBeCalled()
-
-    jest.advanceTimersByTime(1000)
-
-    expect(callback).toBeCalled()
-    expect(callback).toHaveBeenCalledTimes(2)
-  })
-
-  test('pauses interval if no delay', () => {
-    const { rerender } = renderHook(
+    renderHook<void, { interval?: number | null }>(
       ({ interval }) => useInterval(callback, interval),
       {
         initialProps: { interval: 500 },
-      }
-    )
+      },
+    );
 
-    jest.advanceTimersByTime(500)
-    expect(callback).toHaveBeenCalledTimes(1)
+    expect(callback).not.toHaveBeenCalled();
 
-    rerender({ interval: null })
+    vi.advanceTimersByTime(1000);
 
-    jest.advanceTimersByTime(500)
-    expect(callback).toHaveBeenCalledTimes(1)
+    expect(callback).toHaveBeenCalled();
+    expect(callback).toHaveBeenCalledTimes(2);
+  });
 
-    rerender({ interval: 500 })
+  test('pauses interval if no delay', () => {
+    const { rerender } = renderHook<void, { interval?: number | null }>(
+      ({ interval }) => useInterval(callback, interval),
+      {
+        initialProps: { interval: 500 },
+      },
+    );
 
-    jest.advanceTimersByTime(500)
-    expect(callback).toHaveBeenCalledTimes(2)
-  })
-})
+    vi.advanceTimersByTime(500);
+    expect(callback).toHaveBeenCalledTimes(1);
+
+    rerender({ interval: null });
+
+    vi.advanceTimersByTime(500);
+    expect(callback).toHaveBeenCalledTimes(1);
+
+    rerender({ interval: 500 });
+
+    vi.advanceTimersByTime(500);
+    expect(callback).toHaveBeenCalledTimes(2);
+  });
+});

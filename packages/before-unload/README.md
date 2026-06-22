@@ -3,7 +3,6 @@
 React hook to provide a message prompt before the page is unloaded
 
 ![NPM version](https://img.shields.io/npm/v/@hooks/before-unload?style=flat-square)
-![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
 ![License](https://img.shields.io/npm/l/@hooks/before-unload?style=flat-square)
 
 ## Install
@@ -17,7 +16,7 @@ npm i @hooks/before-unload
 ### useBeforeUnload
 
 ```ts
-useBeforeUnload(message?: string)
+useBeforeUnload(message?: string): void
 ```
 
 #### Parameters
@@ -25,3 +24,5 @@ useBeforeUnload(message?: string)
 ##### `message?: string`
 
 If provided, will cause the message to be shown before the page is unloaded.
+
+#### Return `void`

@@ -1,16 +1,13 @@
-/**
- * @jest-environment node
- */
-
-import renderHookServer from '../../utils/renderHookServer'
-import useTimeout from '.'
+import { describe, expect, test, vi } from 'vitest';
+import { renderHookServer } from '../../utils/renderHookServer.js';
+import { useTimeout } from './index';
 
 describe('useTimeout', () => {
   test('should render', () => {
-    const callback = jest.fn().mockName('mock callback')
+    const callback = vi.fn().mockName('mock callback');
 
-    renderHookServer(() => useTimeout(callback, 1000))
+    renderHookServer(() => useTimeout(callback, 1000));
 
-    expect(callback).not.toHaveBeenCalled()
-  })
-})
+    expect(callback).not.toHaveBeenCalled();
+  });
+});

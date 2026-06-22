@@ -3,7 +3,6 @@
 React hook to remember a value between renders
 
 ![NPM version](https://img.shields.io/npm/v/@hooks/previous?style=flat-square)
-![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
 ![License](https://img.shields.io/npm/l/@hooks/previous?style=flat-square)
 
 ## Install
@@ -17,7 +16,7 @@ npm i @hooks/previous
 ### usePrevious
 
 ```ts
-usePrevious(value: T): T
+usePrevious<T>(value: T): T | undefined
 ```
 
 #### Parameters
@@ -26,6 +25,6 @@ usePrevious(value: T): T
 
 The value to be returned on the next render.
 
-#### Return
+#### Return `T | undefined`
 
 Returns the last value, undefined for initial render.

@@ -1,22 +1,22 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 
 /**
  * @param message If provided, will cause the message to be shown before the page is unloaded.
  */
-export default function useBeforeUnload(message?: string) {
+export function useBeforeUnload(message?: string) {
   useEffect(() => {
-    if (!message) return
+    if (!message) return;
 
     const handler = (event: BeforeUnloadEvent) => {
-      event.preventDefault()
+      event.preventDefault();
 
-      event.returnValue = message
+      event.returnValue = message;
 
-      return message
-    }
+      return message;
+    };
 
-    window.addEventListener('beforeunload', handler)
+    window.addEventListener('beforeunload', handler);
 
-    return () => window.removeEventListener('beforeunload', handler)
-  }, [message])
+    return () => window.removeEventListener('beforeunload', handler);
+  }, [message]);
 }

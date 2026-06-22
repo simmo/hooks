@@ -1,73 +1,74 @@
-import { renderHook } from '@testing-library/react-hooks'
-import useRaf from '.'
+import { describe, test, expect, beforeEach, vi } from 'vitest';
+import { renderHook } from '@testing-library/react';
+import { useRaf } from './index';
 
 describe('useRaf', () => {
-  const mockedTimestamp = 123456
-  const requestAnimationFrameSpy = jest
+  const mockedTimestamp = 123456;
+  const requestAnimationFrameSpy = vi
     .spyOn(window, 'requestAnimationFrame')
     .mockImplementation(tick => {
-      tick(mockedTimestamp)
-      return mockedTimestamp
-    })
-  const cancelAnimationFrameSpy = jest.spyOn(window, 'cancelAnimationFrame')
+      tick(mockedTimestamp);
+      return mockedTimestamp;
+    });
+  const cancelAnimationFrameSpy = vi.spyOn(window, 'cancelAnimationFrame');
 
   beforeEach(() => {
-    requestAnimationFrameSpy.mockClear()
-    cancelAnimationFrameSpy.mockClear()
-  })
+    requestAnimationFrameSpy.mockClear();
+    cancelAnimationFrameSpy.mockClear();
+  });
 
   test('registers raf callback', () => {
-    renderHook(() => useRaf(jest.fn()))
+    renderHook(() => useRaf(vi.fn()));
 
-    expect(requestAnimationFrameSpy).toHaveBeenCalled()
-  })
+    expect(requestAnimationFrameSpy).toHaveBeenCalled();
+  });
 
   test('executes callback', () => {
-    const callback = jest.fn()
+    const callback = vi.fn();
 
-    renderHook(() => useRaf(callback, []))
+    renderHook(() => useRaf(callback, []));
 
-    expect(callback).toHaveBeenCalledWith(mockedTimestamp)
-  })
+    expect(callback).toHaveBeenCalledWith(mockedTimestamp);
+  });
 
   test('only calls callback when dependencies change', () => {
-    const callback = jest.fn()
+    const callback = vi.fn();
     const { rerender } = renderHook(({ deps }) => useRaf(callback, deps), {
       initialProps: { deps: [true] },
-    })
+    });
 
-    rerender({ deps: [false] })
-    rerender({ deps: [true] })
-    rerender({ deps: [true] })
-    rerender({ deps: [false] })
+    rerender({ deps: [false] });
+    rerender({ deps: [true] });
+    rerender({ deps: [true] });
+    rerender({ deps: [false] });
 
-    expect(callback).toHaveBeenCalledTimes(4)
-  })
+    expect(callback).toHaveBeenCalledTimes(4);
+  });
 
   test('updates callback', () => {
-    const firstCallback = jest.fn()
-    const secondCallback = jest.fn()
+    const firstCallback = vi.fn();
+    const secondCallback = vi.fn();
     const { rerender } = renderHook(
       ({ callback, deps }) => useRaf(callback, deps),
       {
         initialProps: { callback: firstCallback, deps: [true] },
-      }
-    )
+      },
+    );
 
-    rerender({ callback: secondCallback, deps: [true] })
-    expect(secondCallback).not.toHaveBeenCalled()
+    rerender({ callback: secondCallback, deps: [true] });
+    expect(secondCallback).not.toHaveBeenCalled();
 
-    rerender({ callback: secondCallback, deps: [false] })
-    expect(secondCallback).toHaveBeenCalled()
-  })
+    rerender({ callback: secondCallback, deps: [false] });
+    expect(secondCallback).toHaveBeenCalled();
+  });
 
   test('cancels raf callback', () => {
-    const { unmount } = renderHook(() => useRaf(jest.fn()))
+    const { unmount } = renderHook(() => useRaf(vi.fn()));
 
-    unmount()
+    unmount();
 
-    expect(cancelAnimationFrame).toHaveBeenCalled()
-  })
+    expect(cancelAnimationFrame).toHaveBeenCalled();
+  });
 
   // test('executes callback when request animation frame is called', () => {
   //   const callback = (timeElapsed: number) => timeElapsed
@@ -87,7 +88,7 @@ describe('useRaf', () => {
 
   //   expect(callback).toHaveBeenCalled()
   // })
-})
+});
 
 // const callback = jest.fn()
 // const { rerender } = renderHook(deps => useRaf(callback, deps), {
@@ -95,11 +96,11 @@ describe('useRaf', () => {
 // })
 
 // test('executes callback after delay', () => {
-//   expect(callback).not.toBeCalled()
+//   expect(callback).not.toHaveBeenCalled()
 
 //   jest.advanceTimersByTime(1000)
 
-//   expect(callback).toBeCalled()
+//   expect(callback).toHaveBeenCalled()
 //   expect(callback).toHaveBeenCalledTimes(2)
 // })
 

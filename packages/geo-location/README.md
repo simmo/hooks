@@ -3,7 +3,6 @@
 React hook to return geo location details
 
 ![NPM version](https://img.shields.io/npm/v/@hooks/geo-location?style=flat-square)
-![Travis](https://img.shields.io/travis/com/simmo/hooks?style=flat-square)
 ![License](https://img.shields.io/npm/l/@hooks/geo-location?style=flat-square)
 
 ## Install
@@ -17,7 +16,7 @@ npm i @hooks/geo-location
 ### useGeoLocation
 
 ```ts
-useGeoLocation(options?: PositionOptions): [Position, PositionError]
+useGeoLocation(options?: PositionOptions): [GeolocationPosition | null, GeolocationPositionError | null]
 ```
 
 #### Parameters
@@ -26,6 +25,6 @@ useGeoLocation(options?: PositionOptions): [Position, PositionError]
 
 Passes PositionOptions through to the geolocation API - https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions
 
-#### Return
+#### Return `[GeolocationPosition | null, GeolocationPositionError | null]`
 
 Returns an array containing the position and any position error.
